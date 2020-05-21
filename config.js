@@ -1,7 +1,7 @@
 module.exports = {
   meta: {
     title: 'Everfall',
-    description: '',
+    description: 'An example description.',
     thumbnail: 'https://example.com/thumb.png',
     themeColor: '#000000',
     url: 'https://example.com',
