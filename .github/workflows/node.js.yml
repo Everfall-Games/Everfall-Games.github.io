@@ -25,11 +25,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: yarn
     - run: yarn run build
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@3.5.2
-      env:
-        CI: true
-      with:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: gh-pages # The branch the action should deploy to.
-        FOLDER: dist # The folder the action should deploy.
+    # - name: Deploy to GitHub Pages
+    #   uses: JamesIves/github-pages-deploy-action@3.5.2
+    #   env:
+    #     CI: true
+    #   with:
+    #     ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+    #     BRANCH: gh-pages # The branch the action should deploy to.
+    #     FOLDER: dist # The folder the action should deploy.
