@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Clean install dependencies
-        run: yarn ci
+        run: yarn install --frozen-lockfile
 
       - name: Webpack build
         run: yarn build
