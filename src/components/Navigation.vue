@@ -1,11 +1,11 @@
 <template lang="pug">
   section.navigation
-    a.header( href="/" ) {{ config.meta.title }}
-    a( href="/jobs" ) Jobs
-    span •
-    a( href="/developers" ) Developers
-    span •
-    a( href="/login" ) Log in
+    router-link.header( to="/" :current="path === '/' || path === ''" ) {{ config.meta.title }}
+    router-link( to="/#lb-2" :current="path === '/#lb-2'" ) LB-2
+    router-link( to="/#coming-soon" :current="path === '/#coming-soon'" ) Coming Soon
+    //- router-link( to="/#about" :current="path === '/#about'" ) About
+    //- router-link( to="/#contact" :current="path === '/#contact'" ) Contact
+    .line
 </template>
 
 <script>
@@ -17,39 +17,65 @@
         config,
       }
     },
+
+    computed: {
+      path () {
+        return this.$route.fullPath
+      },
+    },
+
+    mounted () {
+      console.log(this.path)
+    },
   }
 </script>
 
 <style lang="sass" scoped>
   section.navigation
-    min-height: 90px
+    text-transform: uppercase
+    padding: 0 160px
+    width: 100%
+    height: 100px
+    position: fixed
     display: flex
     align-items: center
-    font-weight: bold
-    width: 100%
-    flex-wrap: wrap
-    align-content: center
+    justify-content: flex-start
 
-    @media (max-width: 550px)
-      height: 60px
+    .line
+      position: absolute
+      bottom: 0
+      height: 1px
+      width: 100%
+      background: linear-gradient(to right, gray, white, transparent)
+      left: 0
+      opacity: 0.3
+      max-width: 1400px
 
-      a.header
-        width: 100%
-        margin-bottom: 10px
-        margin-top: 10px
-
-    a, span
-      font-size: 14px
+    a
+      color: white
       text-decoration: none
-      color: var(--header)
+      transition: color 0.2s, border-color 0.2s
+      height: 100%
+      display: flex
+      align-items: center
 
     a.header
-      margin-right: auto
-      font-size: 24px
+      font-weight: 600
+      font-size: 26px
+      letter-spacing: 5px
 
-    a:not(.header):hover
-      text-decoration: underline
+    a:not(:first-child)
+      margin-left: 90px
+      font-weight: 400
+      color: rgba(white, 0.6)
+      letter-spacing: 0.5px
+      border-bottom: 4px solid transparent
+      border-top: 4px solid transparent
+      font-size: 16px
 
-    span
-      margin: 0 8px
+      &[current]
+        border-bottom: 4px solid var(--border)
+
+      &:hover, &[current]
+        color: white
 </style>

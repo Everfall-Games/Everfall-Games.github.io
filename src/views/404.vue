@@ -1,7 +1,6 @@
 <template lang="pug">
   section.not-found
     h1 404
-    .divider
     h1 This page doesn't exist.
 </template>
 

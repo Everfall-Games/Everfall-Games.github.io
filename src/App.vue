@@ -8,15 +8,8 @@
 </style>
 
 <style lang="sass" scoped>
-  #app
-    padding: 0 60px
-
   #app, .layout
     width: 100%
-
-  @media (max-width: 550px)
-    #app
-      padding: 0 30px
 </style>
 
 <script>

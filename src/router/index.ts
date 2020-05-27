@@ -11,7 +11,6 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    layout: BlankLayout,
     component: (): Promise<typeof import('*.vue')> => import(/* webpackChunkName: "home" */ '../views/index.vue'),
   },
   // {

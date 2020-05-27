@@ -12,7 +12,6 @@
     height: 90px
     display: flex
     align-items: center
-    font-weight: bold
     width: 100%
     flex-wrap: wrap
     align-content: center

@@ -2,20 +2,16 @@
   main
     Navigation
     router-view.view
-    Footer
+    //- Footer
 </template>
 
 <style lang="sass" scoped>
   main
     min-height: 100vh
-    display: flex
-    flex-direction: column
-    align-items: center
 
   .view
-    flex-grow: 1
     width: 100%
-    max-width: 688px
+    padding-top: 100px
 </style>
 
 <script>

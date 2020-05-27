@@ -12,15 +12,17 @@ const {
   port,
 } = require('./config')
 
-module.exports = () => ({
-  plugins: [
-    new HtmlWebpackPlugin({
-      inject: true,
-      template: './src/index.pug',
-    }),
+const plugins = [
+  new HtmlWebpackPlugin({
+    inject: true,
+    template: './src/index.pug',
+  }),
 
-    new VueLoaderPlugin(),
+  new VueLoaderPlugin(),
+]
 
+if (process.env.NODE_ENV === 'production') {
+  plugins.push(
     new WorkboxPlugin.GenerateSW({
       clientsClaim: true,
       skipWaiting: true,
@@ -49,19 +51,35 @@ module.exports = () => ({
       //   },
       // ],
     }),
-
+  
     new RobotstxtPlugin({
       userAgent: "*",
       allow: "/",
     }),
 
     new PrerenderSPAPlugin({
-      // Required - The path to the webpack-outputted app to prerender.
       staticDir: path.join(__dirname, 'dist'),
-      // Required - Routes to render.
       routes: ['/'],
     }),
-  ],
+  )
+}
+
+const sassLoader = [
+  'vue-style-loader',
+  'css-loader',
+  {
+    loader: 'sass-loader',
+    options: {
+      sassOptions: {
+        indentedSyntax: true,
+        includePaths: [path.resolve(__dirname, 'src', 'sass')],
+      },
+    },
+  },
+]
+
+module.exports = () => ({
+  plugins,
 
   module: {
     rules: [
@@ -90,19 +108,7 @@ module.exports = () => ({
       },
       {
         test: /\.sass$/,
-        use: [
-          'vue-style-loader',
-          'css-loader',
-          {
-            loader: 'sass-loader',
-            options: {
-              sassOptions: {
-                indentedSyntax: true,
-                includePaths: [path.resolve(__dirname, 'src', 'sass')],
-              },
-            },
-          },
-        ],
+        use: sassLoader,
       },
       {
         test: /\.(png|jpg|gif|woff|woff2|eot|ttf|otf)$/,
@@ -126,21 +132,7 @@ module.exports = () => ({
         loader: 'vue-loader',
         options: {
           esModule: true,
-          loaders: {
-            sass: [
-              'vue-style-loader',
-              'css-loader',
-              {
-                loader: 'sass-loader',
-                options: {
-                  sassOptions: {
-                    indentedSyntax: true,
-                    includePaths: [path.resolve(__dirname, 'src', 'sass')],
-                  },
-                },
-              },
-            ],
-          },
+          loaders: { sass: sassLoader },
         },
       },
     ],
