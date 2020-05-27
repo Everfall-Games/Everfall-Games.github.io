@@ -1,0 +1,12 @@
+<svg id="Close_Icon" data-name="Close Icon" xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path class="cls-1" d="M690.007,6816.96l17.845-16.95,2.141,2.03-17.845,16.95Z" transform="translate(-690 -6800)"/>
+  <path id="Rectangle_11_copy" data-name="Rectangle 11 copy" class="cls-1" d="M692.148,6800.01l17.845,16.95-2.141,2.03-17.845-16.95Z" transform="translate(-690 -6800)"/>
+</svg>
