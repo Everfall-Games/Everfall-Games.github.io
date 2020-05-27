@@ -47,13 +47,24 @@
 <style lang="sass" scoped>
   section.navigation
     text-transform: uppercase
-    padding: 0 170px
+    padding: 0 160px
     width: 100%
     height: 100px
     position: fixed
     display: flex
     align-items: center
     justify-content: flex-start
+    z-index: 1
+
+    &::before
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      background: linear-gradient(to bottom, rgba(black, 0.7), transparent)
+      content: ''
+      z-index: -1
 
     .line
       position: absolute
@@ -82,8 +93,8 @@
     a:not(:first-child)
       margin-left: 90px
       font-weight: 400
-      color: rgba(white, 0.6)
-      fill: rgba(white, 0.6)
+      color: rgb(160, 160, 160)
+      fill: rgb(160, 160, 160)
       letter-spacing: 0.5px
       border-bottom: 4px solid transparent
       border-top: 4px solid transparent
@@ -101,7 +112,7 @@
         fill: white
 
     @media (max-width: 1400px)
-      padding: 0 130px
+      padding: 0 120px
       height: 80px
 
       a.header
@@ -143,13 +154,14 @@
           &:last-child
             transform: rotate(-45deg)
 
-    @media (min-width: 901px)
-      *[mobile]
-        display: none
-
     @media (max-width: 900px)
       padding: 0 45px
 
+    @media (min-width: 1001px)
+      *[mobile]
+        display: none
+
+    @media (max-width: 1000px)
       *[desktop]
         display: none
 </style>

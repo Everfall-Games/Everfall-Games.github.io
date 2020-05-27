@@ -11,7 +11,6 @@
 
   .view
     width: 100%
-    padding-top: 100px
 </style>
 
 <script>

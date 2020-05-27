@@ -91,7 +91,7 @@ module.exports = () => ({
             use: ['pug-plain-loader'],
           },
           {
-            use: ['pug-loader'],
+            use: 'pug-loader',
           },
         ],
       },
@@ -99,12 +99,6 @@ module.exports = () => ({
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
-      },
-      {
-        test: /\.css$/,
-        use: [
-          'css-loader',
-        ],
       },
       {
         test: /\.sass$/,
@@ -123,9 +117,7 @@ module.exports = () => ({
       },
       {
         test: /\.svg$/,
-        use: [
-          'vue-svg-loader',
-        ],
+        use: 'vue-svg-loader',
       },
       {
         test: /\.vue$/,
@@ -134,6 +126,13 @@ module.exports = () => ({
           esModule: true,
           loaders: { sass: sassLoader },
         },
+      },
+      {
+        test: /\.webp$/i,
+        use: [
+          'file-loader',
+          // 'webp-loader',
+        ],
       },
     ],
   },
