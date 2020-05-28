@@ -6,6 +6,9 @@
   padding: 0
   box-sizing: border-box
 
+html
+  overflow: hidden
+
 body
   font-family: 'MADETOMMY', sans-serif
   background-color: var(--background)
@@ -15,6 +18,20 @@ body
 button
   background-color: transparent
   border: none
-  outline: none
   fill: white
   cursor: pointer
+
+  &:hover
+    color: var(--border)
+    fill: var(--border)
+
+a
+  color: var(--text)
+
+  &:hover
+    color: var(--border)
+    fill: var(--border)
+
+a, button
+  &:focus
+    outline: 1px dotted var(--border)

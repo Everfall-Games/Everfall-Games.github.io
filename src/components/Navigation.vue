@@ -1,15 +1,21 @@
 <template lang="pug">
   section.navigation
-    router-link.header( to="/" :current="path === '/' || path === ''" ) {{ config.meta.title }}
+    Link.header( url="/" v-on:mousedown.native="$store.commit('setSlide', 0)" ) {{ config.meta.title }}
 
-    router-link( to="/#lb-2" :current="path === '/#lb-2'" desktop ) 
+    Link( url="/#lb-2" v-on:mousedown.native="$store.commit('setSlide', 1)" desktop ) 
       Icon lb2-symbol
       | LB-2
 
-    router-link( to="/#coming-soon" :current="path === '/#coming-soon'" desktop ) Coming soon
-    router-link( to="/#contact" :current="path === '/#contact'" desktop ) Contact
+    Link( url="/#coming-soon" v-on:mousedown.native="$store.commit('setSlide', 2)" desktop ) Coming soon
+    Link( url="/#contact" v-on:mousedown.native="" desktop ) Contact
 
-    button.hamburger( mobile @click="open = !open" :open="open" )
+    button.hamburger( 
+      @mousedown="event => event.preventDefault()"
+      @click="open = !open" 
+      :open="open" 
+      aria-label="Menu button"
+      mobile 
+    )
       span
       span
 
@@ -18,11 +24,13 @@
 
 <script>
   import config from 'config'
-  import Icon from '@/components/Icon'
+  import Icon from './Icon'
+  import Link from './Link'
 
   export default {
     components: {
       Icon,
+      Link,
     },
 
     data () {
@@ -39,7 +47,9 @@
     },
 
     mounted () {
-      console.log(this.path)
+      if (this.path === '/') {
+        window.scrollTo(0, 0)
+      }
     },
   }
 </script>
@@ -105,13 +115,13 @@
         margin-right: 10px
 
       &[current]
-        // border-bottom: 4px solid var(--border)
+        border-bottom: 4px solid var(--border)
 
       &:hover, &[current]
         color: white
         fill: white
 
-    @media (max-width: 1400px)
+    @media (max-width: 1400px), (max-height: 900px)
       padding: 0 120px
       height: 80px
 
@@ -127,8 +137,9 @@
       display: flex
       align-items: center
       justify-content: center
-      width: 25px
-      height: 25px
+      width: 35px
+      height: 35px
+      right: -5px
 
       span
         display: inline-block
@@ -154,7 +165,7 @@
           &:last-child
             transform: rotate(-45deg)
 
-    @media (max-width: 900px)
+    @media (max-width: 900px), (max-height: 800px)
       padding: 0 45px
 
     @media (min-width: 1001px)

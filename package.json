@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "webpack-dev-server --mode=development --display=minimal",
-    "build": "webpack --mode production",
+    "build": "cross-env NODE_ENV=production webpack --mode production",
     "serve": "node ./serve.js",
     "dev:mail": "nodemon mail",
     "start:mail": "node mail",
@@ -21,6 +21,7 @@
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
     "babel-eslint": "^10.1.0",
+    "cross-env": "^7.0.2",
     "css-loader": "^3.5.3",
     "eslint": "^7.0.0",
     "eslint-plugin-vue": "^6.2.2",
