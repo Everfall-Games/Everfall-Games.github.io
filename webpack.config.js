@@ -57,10 +57,10 @@ if (process.env.NODE_ENV === 'production') {
       allow: "/",
     }),
 
-    new PrerenderSPAPlugin({
-      staticDir: path.join(__dirname, 'dist'),
-      routes: ['/'],
-    }),
+    // new PrerenderSPAPlugin({
+    //   staticDir: path.join(__dirname, 'dist'),
+    //   routes: ['/'],
+    // }),
   )
 }
 

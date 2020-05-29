@@ -148,22 +148,23 @@
         width: 25px
         background-color: var(--text)
         pointer-events: none
-
-        transition: transform 0.1s
+        transition: transform 0.2s, top 0.2s, bottom 0.2s
 
         &:first-child
-          transform: translateY(-6px)
+          top: 10px
 
         &:last-child
-          transform: translateY(6px)
+          bottom: 10px
 
       &[open]
         span
           &:first-child
-            transform: rotate(45deg)
+            top: 16px
+            transform: rotate(135deg)
 
           &:last-child
-            transform: rotate(-45deg)
+            bottom: 16px
+            transform: rotate(-135deg)
 
     @media (max-width: 900px), (max-height: 800px)
       padding: 0 45px
