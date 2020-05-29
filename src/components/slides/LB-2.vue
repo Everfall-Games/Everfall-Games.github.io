@@ -109,6 +109,16 @@
 <style lang="sass" scoped>
   @import slide
 
+  @keyframes slideIn
+    0%
+      transform: translateY(50vh)
+
+    100%
+      transform: translateY(0)
+
+  .content, p, .social, h1, .bar, a
+    animation: slideIn 1s ease-out
+
   .slide
     align-items: center
 

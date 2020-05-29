@@ -63,6 +63,13 @@
 </script>
 
 <style lang="sass" scoped>
+  @keyframes slideIn
+    0%
+      transform: translateY(-100%)
+
+    100%
+      transform: translateY(0)
+
   section.navigation
     text-transform: uppercase
     padding: 0 160px
@@ -73,6 +80,8 @@
     align-items: center
     justify-content: flex-start
     z-index: 5
+    transform: translateY(0)
+    animation: slideIn 0.4s ease-out
 
     &::before
       position: absolute

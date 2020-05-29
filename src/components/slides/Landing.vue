@@ -53,6 +53,16 @@
 <style lang="sass" scoped>
   @import slide
 
+  @keyframes slideIn
+    0%
+      transform: translateX(-100%)
+
+    100%
+      transform: translateX(0)
+
+  .content, p, .social, h1:not(.outline)
+    animation: slideIn 1s ease-out
+
   .slide
     background-color: black
 
@@ -119,11 +129,14 @@
       20%
         opacity: 0.3
 
-      60% 
+      40% 
         opacity: 0.1
 
-      80%
+      70%
         opacity: 0.2
+
+      90%
+        opacity: 0.5
 
     .heading
       position: relative

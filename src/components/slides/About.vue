@@ -64,6 +64,16 @@
 <style lang="sass" scoped>
   @import slide
 
+  @keyframes slideIn
+    0%
+      transform: translateX(100%)
+
+    100%
+      transform: translateX(0)
+
+  .content, p, .social, .people, .people > div
+    animation: slideIn 1s ease-out
+
   .content
     text-align: left
     margin-left: auto
