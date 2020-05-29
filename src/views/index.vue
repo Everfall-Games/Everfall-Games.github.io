@@ -109,5 +109,11 @@
 
       window.addEventListener('resize', this.resize)
     },
+
+    destroyed () {
+      window.removeEventListener('wheel', this.wheel)
+
+      window.removeEventListener('resize', this.resize)
+    },
   }
 </script>

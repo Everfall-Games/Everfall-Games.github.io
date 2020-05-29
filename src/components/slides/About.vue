@@ -16,6 +16,19 @@
       h1 Memorable
       h1.outline Experiences
       p We want to become a main distributor of single-player, AAA quality games and with the launch of LB-2 we hope to gain valuable experience to help us transition to more ambitious projects.
+
+      .people
+        div
+          img( src="@/assets/ricardo.png" )
+          div
+            h5 Ricardo Valdes
+            h6 Co-Founder
+            
+        div
+          img( src="@/assets/pedro.png" )
+          div
+            h5 Pedro Civa
+            h6 Co-Founder
 </template>
 
 <script>
@@ -52,67 +65,126 @@
   @import slide
 
   .content
-    padding: 0 60px
     text-align: left
     margin-left: auto
+    border-right: 10px solid var(--border)
+    padding-right: 150px
+    padding-left: 60px
 
   .background > video
     opacity: 0.7
 
-  .symbol
-    height: 40px
-    margin-top: -40px
-    margin-bottom: 20px
-    fill: white
+  .people
+    display: flex
+    margin-top: 50px
 
-  .bar
-    width: 100%
-    max-width: 700px
-    height: 10px
-    background-color: var(--border)
-    position: absolute
-    bottom: 0
+    div
+      display: flex
+      margin-right: 50px
 
-  .learn-more
-    display: inline-block
-    text-decoration: none
-    text-transform: uppercase
-    font-weight: 600
-    letter-spacing: 2px
-    margin-top: 40px
-    transition: color 0.05s
+      div
+        flex-direction: column
+        justify-content: center
+        margin: 0 20px
 
-    // .inner
-    //   clip-path: inset(0 0 0 0%)
-    //   pointer-events: none
-    //   transition: clip-path 0.5s
+    img
+      width: 60px
+      height: 60px
+      clip-path: circle(50% at 50% 50%)
+      object-fit: cover
+      object-position: top
 
-    // .hover
-    //   position: absolute
-    //   top: 0
-    //   left: 0
-    //   color: var(--border)
-    //   clip-path: inset(0 100% 0 0)
-    //   pointer-events: none
-    //   transition: clip-path 0.5s
+    h5
+      text-transform: uppercase
+      letter-spacing: 3px
+      margin-bottom: 3px
+      font-size: 14px
 
-    // &:hover
-    //   .inner
-    //     clip-path: inset(0 0 0 100%)
+    h6
+      font-weight: 400
+      letter-spacing: 1px
+      font-size: 14px
 
-    //   .hover
-    //     clip-path: inset(0 0% 0 0)
+  @media (min-width: 1400px), (min-height: 900px)
+    h1
+      &:first-child
+        margin-top: -32px
+
+    p
+      margin-bottom: -10px
 
   @media (max-width: 1400px), (max-height: 900px)
-    .bar
-      max-width: 600px
+    .content
+      padding-left: 110px
+
+    .social
+      margin-left: 120px
+
+    h1:first-child
+        margin-top: -22px
 
   @media (max-width: 900px), (max-height: 800px)
-    .bar
-      max-width: 500px
-      height: 6px
+    .content
+      padding: 0 40px
+      border-width: 6px
 
-    .symbol
-      height: 30px
-      margin-bottom: 10px
+    .social
+      margin-left: 45px
+
+    h1:first-child
+      margin-top: -18px
+
+    .people
+      img
+        width: 50px
+        height: 50px
+
+      h5
+        letter-spacing: 3px
+        font-size: 13px
+
+      h6
+        letter-spacing: 1px
+        font-size: 13px
+
+  @media (max-width: 700px)
+    .people
+      flex-direction: column
+
+      div
+        margin-right: 0
+        
+        &:first-of-type
+          margin-bottom: 20px
+
+  @media (max-width: 700px), (max-height: 700px)
+    h1:first-child
+      margin-top: -10px
+
+    .people
+      img
+        width: 50px
+        height: 50px
+
+      h5
+        letter-spacing: 3px
+        font-size: 12px
+
+      h6
+        letter-spacing: 1px
+        font-size: 12px
+
+  @media (max-width: 500px), (max-height: 600px)
+    .people
+      img
+        width: 40px
+        height: 40px
+
+      h5
+        letter-spacing: 3px
+        font-size: 10px
+
+      h6
+        letter-spacing: 1px
+        font-size: 10px
 </style>

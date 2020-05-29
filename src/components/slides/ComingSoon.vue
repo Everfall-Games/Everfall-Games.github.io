@@ -10,11 +10,11 @@
         loop 
       )
 
+    Dots( :mask="mask" )
+
     .background.lim
 
     .background.bo
-
-    Dots( :mask="mask" )
 
     .content
       h3 Limbo
@@ -97,16 +97,46 @@
     position: absolute
     bottom: 0
 
-  @media (max-width: 1400px), (max-height: 900px)
-    .bar
+  .bar
+    @media (max-width: 1400px), (max-height: 900px)
       max-width: 600px
 
-  @media (max-width: 900px), (max-height: 800px)
-    .bar
+    @media (max-width: 900px), (max-height: 800px)
       max-width: 500px
       height: 6px
 
-    .symbol
-      height: 30px
-      margin-bottom: 10px
+  .content
+    @media (max-width: 700px), (max-height: 700px)
+      h1
+        font-size: 80px
+        margin-bottom: -18px
+
+      p
+        font-size: 17px
+        margin-top: 40px
+        line-height: 40px
+        max-width: 700px
+
+      h3
+        font-size: 30px
+        margin-bottom: 5px
+        letter-spacing: 6px
+
+    @media (max-width: 500px), (max-height: 600px)
+      h1
+        font-size: 50px
+        line-height: 80px
+
+      p
+        font-size: 14px
+        margin-top: 25px
+
+      h3
+        font-size: 20px
+        margin-bottom: 0px
+        letter-spacing: 6px
+
+    @media (max-width: 320px), (max-height: 600px)
+      h1
+        font-size: 25px
 </style>
