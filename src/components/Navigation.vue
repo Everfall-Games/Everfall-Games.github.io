@@ -2,11 +2,11 @@
   section.navigation
     Link.header( url="/" v-on:mousedown.native="$store.commit('setSlide', 0)" ) {{ config.meta.title }}
 
-    Link( url="/#lb-2" v-on:mousedown.native="$store.commit('setSlide', 1)" desktop ) 
+    Link( url="/lb-2" v-on:mousedown.native="$store.commit('setSlide', 1)" desktop ) 
       Icon lb2-symbol
       | LB-2
 
-    Link( url="/#coming-soon" v-on:mousedown.native="$store.commit('setSlide', 2)" desktop ) Coming soon
+    Link( url="/coming-soon" v-on:mousedown.native="$store.commit('setSlide', 2)" desktop ) Coming soon
     Link( url="/#contact" v-on:mousedown.native="" desktop ) Contact
 
     button.hamburger( 

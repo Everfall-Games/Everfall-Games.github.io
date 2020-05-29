@@ -13,12 +13,16 @@ const routes = [
     name: 'home',
     component: (): Promise<typeof import('*.vue')> => import(/* webpackChunkName: "home" */ '../views/index.vue'),
   },
-  // {
-  //   path: '/jobs',
-  //   name: 'Jobs',
-  //   // component: Jobs,
-  //   component: (): Promise<typeof import('*.vue')> => import(/* webpackChunkName: "jobs" */ '../views/Jobs/index.vue'),
-  // },
+  {
+    path: '/lb-2',
+    name: 'LB2',
+    component: (): Promise<typeof import('*.vue')> => import(/* webpackChunkName: "lb-2" */ '../views/LB-2.vue'),
+  },
+  {
+    path: '/coming-soon',
+    name: 'ComingSoon',
+    component: (): Promise<typeof import('*.vue')> => import(/* webpackChunkName: "coming-soon" */ '../views/ComingSoon.vue'),
+  },
   // {
   //   path: '/jobs/post',
   //   name: 'PostJob',

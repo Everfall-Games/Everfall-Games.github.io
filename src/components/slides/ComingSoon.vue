@@ -1,7 +1,14 @@
 <template lang="pug">
   section.slide#coming-soon
     .background
-      video( src="@/assets/backgrounds/coming-soon.mp4" ref="backgroundVideo" muted autoplay loop )
+      video( 
+        src="@/assets/backgrounds/coming-soon.mp4" 
+        ref="backgroundVideo" 
+        poster="@/assets/backgrounds/coming-soon.webp"
+        muted 
+        autoplay 
+        loop 
+      )
 
     Dots( :mask="mask" )
 
@@ -9,10 +16,6 @@
       h3 Limbo
       h1.outline Coming
       h1 Soon
-    
-      //- a.learn-more( href="#" ) Learn More
-        //- .inner Learn More
-        //- .hover Learn More
 
     .bar
 </template>
@@ -52,15 +55,6 @@
     },
 
     mounted () {
-      // this.canvas = document.createElement('canvas')
-      // this.context = this.canvas.getContext('2d')
-
-      // const context = this
-
-      // window.addEventListener('resize', () => {
-      //   context.gradients = false
-      // })
-
       this.$refs.backgroundVideo.play()
     },
   }

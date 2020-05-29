@@ -1,8 +1,8 @@
 <template lang="pug">
   section.home( ref="home" )
     Landing
-    LB2
-    ComingSoon
+    //- LB2
+    //- ComingSoon
 </template>
 
 <script>
@@ -21,7 +21,8 @@
       return {
         snapPoints: [],
         isScrolling: false,
-        paths: ['/', '/#lb-2', '/#coming-soon'],
+        paths: ['/'],
+        lastPos: 0,
       }
     },
 
@@ -57,7 +58,25 @@
 
         setTimeout(() => {
           this.isScrolling = false
-        }, 300)
+        }, 350)
+      },
+
+      wheel (event) {
+        if (this.isScrolling) return
+
+        const delta = event.deltaY > 0 ? 1 : -1
+
+        this.move(delta)
+
+        this.lastPos = window.scrollY
+      },
+
+      resize () {
+        this.setSnapPoints()
+
+        window.scrollTo({
+          top: this.snapPoints[this.slide], 
+        })
       },
     },
 
@@ -68,16 +87,12 @@
           behavior: 'smooth',
         })
       },
-
-      path (newPath) {
-
-      },
     },
 
     mounted () {
       this.setSnapPoints()
 
-      let lastPos = window.scrollY
+      this.lastPos = window.scrollY
 
       requestAnimationFrame(() => {
         this.$store.commit('setSlide', this.paths.indexOf(this.path))
@@ -87,29 +102,9 @@
         }
       })
 
-      window.addEventListener('wheel', event => {
-        if (this.isScrolling) return
+      window.addEventListener('wheel', this.wheel)
 
-        const delta = event.deltaY > 0 ? 1 : -1
-
-        this.move(delta)
-
-        lastPos = window.scrollY
-      })
-
-      window.addEventListener('resize', () => { 
-        this.setSnapPoints()
-
-        window.scrollTo({
-          top: this.snapPoints[this.slide], 
-        })
-      })
+      window.addEventListener('resize', this.resize)
     },
   }
 </script>
-
-<style lang="sass" scoped>
-  .home
-    > *
-      scroll-snap-align: end
-</style>

@@ -1,7 +1,14 @@
 <template lang="pug">
   section.slide#lb-2
     .background
-      video( src="@/assets/backgrounds/lb2.mp4" ref="backgroundVideo" muted autoplay loop )
+      video( 
+        src="@/assets/backgrounds/lb2.mp4" 
+        ref="backgroundVideo" 
+        poster="@/assets/backgrounds/lb2.webp"
+        muted 
+        autoplay 
+        loop 
+      )
 
     Dots( :mask="mask" )
 
@@ -77,19 +84,24 @@
 
         context.drawImage(gradientCanvas, 0, 0, canvas.width, canvas.height)
       },
+
+      resize () {
+        this.gradients = false
+      },
     },
 
     mounted () {
       this.canvas = document.createElement('canvas')
       this.context = this.canvas.getContext('2d')
 
-      const context = this
-
-      window.addEventListener('resize', () => {
-        context.gradients = false
-      })
+      window.addEventListener('resize', this.resize)
 
       this.$refs.backgroundVideo.play()
+    },
+
+    destroyed () {
+      this.canvas.remove()
+      window.removeEventListener('resize', this.resize)
     },
   }
 </script>

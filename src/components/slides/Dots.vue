@@ -13,8 +13,36 @@
       },
     },
 
+    data () {
+      return {
+        renderInterval: null,
+        dimensions: {
+          x: 0,
+          y: 0,
+        },
+      }
+    },
+
+    methods: {
+      resize () {
+        this.$refs.canvas.width = window.innerWidth
+        this.$refs.canvas.height = window.innerHeight
+
+        this.offset = 25 + (Math.max(window.innerWidth, window.innerHeight) / 40)
+
+        Object.assign(this.dimensions, {
+          x: Math.ceil(window.innerWidth / this.offset) + 2,
+          y: Math.ceil(window.innerHeight / this.offset) + 2,
+        })
+
+        context.fillStyle = 'white'
+      },
+    },
+
     mounted () {
       const { canvas } = this.$refs
+
+      const { dimensions } = this
 
       const context = canvas.getContext('2d') 
 
@@ -27,26 +55,14 @@
 
       const radius = 4
 
-      let offset = 25 + (Math.max(window.innerWidth, window.innerHeight) / 40)
+      this.offset = 25 + (Math.max(window.innerWidth, window.innerHeight) / 40)
 
-      const dimensions = {
-        x: Math.ceil(window.innerWidth / offset) + 2,
-        y: Math.ceil(window.innerHeight / offset) + 2,
-      }
-
-      window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth
-        canvas.height = window.innerHeight
-
-        offset = 25 + (Math.max(window.innerWidth, window.innerHeight) / 40)
-
-        Object.assign(dimensions, {
-          x: Math.ceil(window.innerWidth / offset) + 2,
-          y: Math.ceil(window.innerHeight / offset) + 2,
-        })
-
-        context.fillStyle = 'white'
+      Object.assign(this.dimensions, {
+        x: Math.ceil(window.innerWidth / this.offset) + 2,
+        y: Math.ceil(window.innerHeight / this.offset) + 2,
       })
+
+      window.addEventListener('resize', this.resize)
 
       let frame = 0, step = 1
 
@@ -65,8 +81,8 @@
 
             const R = radius * M
 
-            const OX = (offset - radius) * x
-            const OY = (offset - radius) * y - 50
+            const OX = (this.offset - radius) * x
+            const OY = (this.offset - radius) * y - 50
 
             context.clearRect(OX - radius, OY - radius, radius * 5, radius * 5)
 
@@ -93,7 +109,12 @@
 
       render()
 
-      setInterval(render, 1000 / 60)
+      this.renderInterval = setInterval(render, 1000 / 60)
+    },
+
+    destroyed () {
+      clearInterval(this.renderInterval)
+      window.removeEventListener(this.resize)
     },
   }
 </script>

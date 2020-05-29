@@ -14,9 +14,10 @@
     height: 100vh
 
     h1:first-child
-      font-size: 40px
+      font-size: 60px
+      font-weight: 600
 
     h1:last-child
       font-weight: 200
-      font-size: 20px
+      font-size: 25px
 </style>
