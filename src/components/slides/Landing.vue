@@ -1,5 +1,5 @@
 <template lang="pug">
-  section.slide.landing
+  section.slide#landing
     //- .dots
     Dots( :mask="mask" )
 
@@ -133,9 +133,9 @@
         margin-left: 45px
 
       h1:first-child
-          margin-top: -18px
+        margin-top: -18px
 
     @media (max-width: 700px), (max-height: 700px)
       h1:first-child
-          margin-top: -10px
+        margin-top: -10px
 </style>

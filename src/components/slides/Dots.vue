@@ -38,7 +38,7 @@
         canvas.width = window.innerWidth
         canvas.height = window.innerHeight
 
-        offset = 100 + (Math.max(window.innerWidth, window.innerHeight) / 40)
+        offset = 25 + (Math.max(window.innerWidth, window.innerHeight) / 40)
 
         Object.assign(dimensions, {
           x: Math.ceil(window.innerWidth / offset) + 2,
@@ -106,7 +106,7 @@
     height: 100%
     top: 0
     left: 0
-    opacity: 0.2
+    opacity: 0.3
     pointer-events: none
     clip: rect(0, auto, auto, 0)
 

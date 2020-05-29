@@ -105,7 +105,7 @@ module.exports = () => ({
         use: sassLoader,
       },
       {
-        test: /\.(png|jpg|gif|woff|woff2|eot|ttf|otf)$/,
+        test: /\.(mp4|webm|webp|png|jpg|gif|woff|woff2|eot|ttf|otf)$/,
         use: [
           {
             loader: 'file-loader',
@@ -126,13 +126,6 @@ module.exports = () => ({
           esModule: true,
           loaders: { sass: sassLoader },
         },
-      },
-      {
-        test: /\.webp$/i,
-        use: [
-          'file-loader',
-          // 'webp-loader',
-        ],
       },
     ],
   },

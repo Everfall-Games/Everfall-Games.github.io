@@ -21,12 +21,17 @@
       return {
         snapPoints: [],
         isScrolling: false,
+        paths: ['/', '/#lb-2', '/#coming-soon'],
       }
     },
 
     computed: {
       slide () {
         return this.$store.state.slide
+      },
+
+      path () {
+        return this.$route.fullPath
       },
     },
 
@@ -48,6 +53,8 @@
 
         this.$store.commit('setSlide', this.slide + delta)
 
+        this.$router.push(this.paths[this.slide])
+
         setTimeout(() => {
           this.isScrolling = false
         }, 300)
@@ -61,12 +68,24 @@
           behavior: 'smooth',
         })
       },
+
+      path (newPath) {
+
+      },
     },
 
     mounted () {
       this.setSnapPoints()
 
       let lastPos = window.scrollY
+
+      requestAnimationFrame(() => {
+        this.$store.commit('setSlide', this.paths.indexOf(this.path))
+
+        if (/\#/.test(this.path)) {
+          document.querySelector(this.path.replace('/', '')).scrollIntoView()
+        }
+      })
 
       window.addEventListener('wheel', event => {
         if (this.isScrolling) return
