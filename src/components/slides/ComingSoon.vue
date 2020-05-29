@@ -1,5 +1,5 @@
 <template lang="pug">
-  section.slide#lb-2
+  section.slide#coming-soon
     .background
       video( src="@/assets/backgrounds/coming-soon.mp4" ref="backgroundVideo" muted autoplay loop )
 
