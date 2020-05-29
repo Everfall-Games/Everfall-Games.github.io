@@ -72,7 +72,7 @@
     display: flex
     align-items: center
     justify-content: flex-start
-    z-index: 1
+    z-index: 5
 
     &::before
       position: absolute
@@ -82,7 +82,6 @@
       height: 100%
       background: linear-gradient(to bottom, rgba(black, 0.7), transparent)
       content: ''
-      z-index: -1
 
     .line
       position: absolute
@@ -93,6 +92,7 @@
       left: 0
       opacity: 0.3
       max-width: 1400px
+      z-index: 0
 
     a
       color: white
@@ -101,6 +101,7 @@
       transition: color 0.2s, border-color 0.2s, fill 0.2s
       display: flex
       align-items: center
+      position: relative
 
     > a
       height: 100%

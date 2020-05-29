@@ -6,8 +6,10 @@
     .monster
 
     .content
-      h1 We create
-      h1.outline The unique
+      .heading
+        h1 We create
+        h1.outline The unique
+
       p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut leo pulvinar, sagittis enim et, porta mauris. Nunc mi ex, elementum sed tempor eget, vestibulum at lacus. Pellentesque aliquam sem eu suscipit vehicula. Pellentesque sollicitudin libero ac nibh pulvinar ullamcorper. 
     
     .social
@@ -77,6 +79,7 @@
       background-position: bottom right
       background-repeat: no-repeat
       filter: contrast(0.97) brightness(0.6)
+      z-index: 1
 
     .content
       border-left: 10px solid var(--border)
@@ -86,6 +89,9 @@
       margin-top: auto
       position: relative
       top: 10px
+      display: flex
+      flex-direction: column
+      align-items: flex-start
 
     .social
       fill: white
@@ -105,6 +111,37 @@
 
       svg
         height: inherit
+
+    @keyframes blink
+      0%
+        opacity: 0.1
+
+      20%
+        opacity: 0.3
+
+      60% 
+        opacity: 0.1
+
+      80%
+        opacity: 0.2
+
+    .heading
+      position: relative
+      display: flex
+      flex-direction: column
+
+      &::before
+        content: ''
+        position: absolute
+        background: radial-gradient(ellipse at center, rgba(white, 0.3), rgba(white, 0.2) 20%, transparent 70%)
+        width: 200%
+        height: 300%
+        top: -100%
+        left: -50%
+        opacity: 0.7
+        animation: blink linear infinite 0.2s
+        z-index: -1
+        pointer-events: none
 
     @media (min-width: 1400px), (min-height: 900px)
       h1

@@ -10,7 +10,7 @@
         loop 
       )
 
-    Dots( :mask="mask" )
+    Dots( :mask="mask" v-show="gradients" )
 
     .content
       Icon.symbol lb2

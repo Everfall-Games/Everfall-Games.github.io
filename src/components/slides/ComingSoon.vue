@@ -10,6 +10,10 @@
         loop 
       )
 
+    .background.lim
+
+    .background.bo
+
     Dots( :mask="mask" )
 
     .content
@@ -54,6 +58,20 @@
 
 <style lang="sass" scoped>
   @import slide
+
+  .lim, .bo
+    background-image: url(~!!file-loader!assets/backgrounds/lim.svg)
+    width: 100vw
+    height: 100vh
+    background-repeat: no-repeat
+    background-position: right 80%
+    background-size: 75vmin
+    opacity: 0.05
+
+  .bo
+    background-image: url(~!!file-loader!assets/backgrounds/bo.svg)
+    background-position: -80vmin 35%
+    background-size: 150vmin
 
   .slide
     align-items: center
