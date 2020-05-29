@@ -7,7 +7,7 @@
       | LB-2
 
     Link( url="/coming-soon" desktop ) Coming soon
-    Link( url="/#contact" v-on:mousedown.native="" desktop ) Contact
+    //- Link( url="/#contact" v-on:mousedown.native="" desktop ) Contact
 
     button.hamburger( 
       @mousedown="event => event.preventDefault()"
@@ -25,7 +25,7 @@
         | LB-2
 
       Link( url="/coming-soon" v-on:mousedown.native="() => { $router.push('/coming-soon'); open = false }" ) Coming soon
-      Link( url="/#contact" v-on:mousedown.native="() => { open = false }" ) Contact
+      //- Link( url="/#contact" v-on:mousedown.native="() => { open = false }" ) Contact
 
     .line
 </template>

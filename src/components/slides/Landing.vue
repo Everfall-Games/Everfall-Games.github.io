@@ -69,7 +69,7 @@
     //   background-repeat: no-repeat
 
     .monster
-      background-image: url(~assets/backgrounds/monster-octagons.webp)
+      background-image: url(~assets/backgrounds/monster.webp)
       position: absolute
       top: 0
       right: 0
@@ -78,7 +78,7 @@
       background-size: contain
       background-position: bottom right
       background-repeat: no-repeat
-      filter: contrast(0.97) brightness(0.6)
+      filter: contrast(0.97) brightness(0.7)
       z-index: 1
 
     .content

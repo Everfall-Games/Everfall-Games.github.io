@@ -1,5 +1,5 @@
 <template lang="pug">
-  section.home( ref="home" )
+  section.home( ref="home" @touchstart="touchstart" @touchmove="touchmove" @wheel="wheel" )
     Landing
     About
     //- LB2
@@ -26,6 +26,7 @@
         isScrolling: false,
         paths: ['/', '/#about'],
         lastPos: 0,
+        touchstartPos: 0,
       }
     },
 
@@ -81,6 +82,17 @@
           top: this.snapPoints[this.slide], 
         })
       },
+
+      touchstart ({ touches }) {
+        const [touch] = touches
+        this.touchstartPos = touch.screenY
+      },
+
+      touchmove ({ touches }) {
+        const [touch] = touches
+        if (touch.screenY - this.touchstartPos > window.innerHeight / 5) this.move(-1)
+        if (touch.screenY - this.touchstartPos <  -window.innerHeight / 5) this.move(+1)
+      },
     },
 
     watch: {
@@ -105,14 +117,12 @@
         }
       })
 
-      window.addEventListener('wheel', this.wheel)
-
+      // window.addEventListener('wheel', this.wheel)
       window.addEventListener('resize', this.resize)
     },
 
     destroyed () {
-      window.removeEventListener('wheel', this.wheel)
-
+      // window.removeEventListener('wheel', this.wheel)
       window.removeEventListener('resize', this.resize)
     },
   }
