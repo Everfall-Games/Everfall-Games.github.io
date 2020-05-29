@@ -114,7 +114,7 @@
 
     destroyed () {
       clearInterval(this.renderInterval)
-      window.removeEventListener(this.resize)
+      window.removeEventListener('resize', this.resize)
     },
   }
 </script>

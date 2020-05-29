@@ -1,27 +1,30 @@
 <template lang="pug">
   section.home( ref="home" )
     Landing
+    About
     //- LB2
     //- ComingSoon
 </template>
 
 <script>
   import Landing from '@/components/slides/Landing'
-  import ComingSoon from '@/components/slides/ComingSoon'
-  import LB2 from '@/components/slides/LB-2'
+  import About from '@/components/slides/About'
+  // import ComingSoon from '@/components/slides/ComingSoon'
+  // import LB2 from '@/components/slides/LB-2'
 
   export default {
     components: {
       Landing,
-      ComingSoon,
-      LB2,
+      About,
+      // ComingSoon,
+      // LB2,
     },
 
     data () {
       return {
         snapPoints: [],
         isScrolling: false,
-        paths: ['/'],
+        paths: ['/', '/#about'],
         lastPos: 0,
       }
     },

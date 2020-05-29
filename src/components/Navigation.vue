@@ -1,6 +1,6 @@
 <template lang="pug">
   section.navigation
-    Link.header( url="/" v-on:mousedown.native="$store.commit('setSlide', 0)" ) {{ config.meta.title }}
+    Link.header( url="/" v-on:mousedown.native="() => { $store.commit('setSlide', 0); open = false }" ) {{ config.meta.title }}
 
     Link( url="/lb-2" v-on:mousedown.native="$store.commit('setSlide', 1)" desktop ) 
       Icon lb2-symbol
@@ -18,6 +18,14 @@
     )
       span
       span
+
+    .menu( v-show="open" mobile )
+      Link( url="/lb-2" v-on:mousedown.native="() => { $router.push('/lb-2'); open = false }" ) 
+        //- Icon lb2-symbol
+        | LB-2
+
+      Link( url="/coming-soon" v-on:mousedown.native="() => { $router.push('/coming-soon'); open = false }" ) Coming soon
+      Link( url="/#contact" v-on:mousedown.native="() => { open = false }" ) Contact
 
     .line
 </template>
@@ -91,16 +99,20 @@
       fill: white
       text-decoration: none
       transition: color 0.2s, border-color 0.2s, fill 0.2s
-      height: 100%
       display: flex
       align-items: center
+
+    > a
+      height: 100%
 
     a.header
       font-weight: 600
       font-size: 26px
       letter-spacing: 5px
+      position: relative
+      z-index: 3
 
-    a:not(:first-child)
+    a:not(.header)
       margin-left: 90px
       font-weight: 400
       color: rgb(160, 160, 160)
@@ -121,6 +133,46 @@
         color: white
         fill: white
 
+    .menu
+      position: fixed
+      top: 0
+      left: 0
+      width: 100vw
+      height: 100vh
+      background-image: url(~assets/backgrounds/menu.webp)
+      display: flex
+      flex-direction: column
+      align-items: flex-start
+      justify-content: flex-start
+      background-position: center right
+      background-size: cover
+      z-index: 2
+      padding: 0 120px
+      padding-top: 100px
+
+      a:not(.header)
+        position: relative
+        margin: 0
+        font-size: 50px
+        margin-top: 50px
+        color: white
+        font-weight: 800
+        letter-spacing: 3px
+        border-bottom: none
+
+        &:hover
+          color: var(--border)
+
+      &::before
+        position: fixed
+        width: 100vw
+        height: 100vh
+        left: 0
+        top: 0
+        background-color: var(--background)
+        content: ''
+        opacity: 0.7
+
     @media (max-width: 1400px), (max-height: 900px)
       padding: 0 120px
       height: 80px
@@ -140,6 +192,7 @@
       width: 35px
       height: 35px
       right: -5px
+      z-index: 3
 
       span
         display: inline-block
@@ -168,6 +221,10 @@
 
     @media (max-width: 900px), (max-height: 800px)
       padding: 0 45px
+
+      .menu
+        padding: 0 45px
+        padding-top: 100px
 
     @media (min-width: 1001px)
       *[mobile]

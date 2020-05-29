@@ -1,10 +1,10 @@
 <template lang="pug">
-  section.slide#coming-soon
+  section.slide#about
     .background
       video( 
-        src="@/assets/backgrounds/coming-soon.mp4" 
+        src="@/assets/backgrounds/about.mp4" 
         ref="backgroundVideo" 
-        poster="@/assets/backgrounds/coming-soon.webp"
+        poster="@/assets/backgrounds/about.webp"
         muted 
         autoplay 
         loop 
@@ -13,11 +13,9 @@
     Dots( :mask="mask" )
 
     .content
-      h3 Limbo
-      h1.outline Coming
-      h1 Soon
-
-    .bar
+      h1 Memorable
+      h1.outline Experiences
+      p We want to become a main distributor of single-player, AAA quality games and with the launch of LB-2 we hope to gain valuable experience to help us transition to more ambitious projects.
 </template>
 
 <script>
@@ -32,12 +30,10 @@
 
     methods: {
       mask (canvas, context) {
-        const gradient = context.createLinearGradient(0, 0, canvas.width, -canvas.height)
+        const gradient = context.createLinearGradient(0, 0, canvas.width, -canvas.height / 2)
 
         gradient.addColorStop(0, 'white')
-        gradient.addColorStop(0.2, 'transparent')
         gradient.addColorStop(0.5, 'transparent')
-        gradient.addColorStop(1, 'white')
 
         context.fillStyle = gradient
         context.fillRect(0, 0, canvas.width, canvas.height)
@@ -55,15 +51,13 @@
 <style lang="sass" scoped>
   @import slide
 
-  .slide
-    align-items: center
-
   .content
     padding: 0 60px
-    text-align: center
+    text-align: left
+    margin-left: auto
 
   .background > video
-    opacity: 0.4
+    opacity: 0.7
 
   .symbol
     height: 40px
@@ -75,9 +69,39 @@
     width: 100%
     max-width: 700px
     height: 10px
-    background-color: var(--text)
+    background-color: var(--border)
     position: absolute
     bottom: 0
+
+  .learn-more
+    display: inline-block
+    text-decoration: none
+    text-transform: uppercase
+    font-weight: 600
+    letter-spacing: 2px
+    margin-top: 40px
+    transition: color 0.05s
+
+    // .inner
+    //   clip-path: inset(0 0 0 0%)
+    //   pointer-events: none
+    //   transition: clip-path 0.5s
+
+    // .hover
+    //   position: absolute
+    //   top: 0
+    //   left: 0
+    //   color: var(--border)
+    //   clip-path: inset(0 100% 0 0)
+    //   pointer-events: none
+    //   transition: clip-path 0.5s
+
+    // &:hover
+    //   .inner
+    //     clip-path: inset(0 0 0 100%)
+
+    //   .hover
+    //     clip-path: inset(0 0% 0 0)
 
   @media (max-width: 1400px), (max-height: 900px)
     .bar
