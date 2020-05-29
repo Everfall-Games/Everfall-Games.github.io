@@ -3,6 +3,9 @@
     //- .dots
     Dots( :mask="mask" )
 
+    .background.octagon
+    .background.octagon.reverse
+
     .monster
 
     .content
@@ -53,30 +56,52 @@
 <style lang="sass" scoped>
   @import slide
 
+  @keyframes spin
+    0%
+      transform: rotate(0deg)
+
+    50%
+      transform: rotate(180deg)
+
+    100%
+      transform: rotate(360deg)
+
+  .background.octagon
+    background-image: url(~!!file-loader!assets/backgrounds/octagon.svg)
+    width: 95vmin
+    height: 95vmin
+    background-size: contain
+    z-index: 1
+    background-repeat: no-repeat
+    animation: spin 15s linear infinite
+    background-position: center center
+    right: -22vmin
+    left: auto
+    top: auto
+    bottom: 0
+
+    &.reverse
+      animation-direction: reverse
+      animation-duration: 30s
+      animation-delay: -5s
+      opacity: 0.5
+      right: -20vmin
+      // width: 98vmin
+      // height: 98vmin
+
   @keyframes slideIn
     0%
       transform: translateX(-100%)
 
     100%
       transform: translateX(0)
+      
 
   .content, p, .social, h1:not(.outline)
     animation: slideIn 1s ease-out
 
   .slide
     background-color: black
-
-    // .dots
-    //   background-image: url(~assets/backgrounds/landing-dots.webp)
-    //   position: absolute
-    //   top: 100px
-    //   left: 0
-    //   width: 100%
-    //   height: calc(100% - 100px)
-    //   background-position: 0 100px
-    //   background-size: cover
-    //   background-attachment: fixed
-    //   background-repeat: no-repeat
 
     .monster
       background-image: url(~assets/backgrounds/monster.webp)
