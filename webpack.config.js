@@ -39,6 +39,7 @@ if (process.env.NODE_ENV === 'production') {
     new WorkboxPlugin.GenerateSW({
       clientsClaim: true,
       skipWaiting: true,
+      exclude: [/\.map$/, /_redirects/],
     }),
     
     new WebpackPwaManifest({
@@ -157,6 +158,8 @@ module.exports = () => ({
     path: path.resolve(__dirname, 'dist'),
     filename: "[name].bundle.js",
   },
+
+  devtool: 'source-map',
 
   devServer: {
     port: port,
