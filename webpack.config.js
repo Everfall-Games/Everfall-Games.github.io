@@ -4,8 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const WorkboxPlugin = require('workbox-webpack-plugin')
 const WebpackPwaManifest = require('webpack-pwa-manifest')
-const RobotstxtPlugin = require('robotstxt-webpack-plugin')
 const PrerenderSPAPlugin = require('prerender-spa-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 const {
   meta, 
@@ -16,6 +16,19 @@ const plugins = [
   new HtmlWebpackPlugin({
     inject: true,
     template: './src/index.pug',
+  }),
+
+  new CopyPlugin({
+    patterns: [
+      {
+        from: 'public',
+        to: '', 
+      },
+    ],
+
+    options: {
+      concurrency: 100,
+    },
   }),
 
   new VueLoaderPlugin(),
@@ -50,11 +63,6 @@ if (process.env.NODE_ENV === 'production') {
       //     purpose: 'maskable',
       //   },
       // ],
-    }),
-  
-    new RobotstxtPlugin({
-      userAgent: "*",
-      allow: "/",
     }),
 
     // new PrerenderSPAPlugin({
