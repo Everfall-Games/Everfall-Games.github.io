@@ -155,19 +155,19 @@
 
     @keyframes blink
       0%
-        opacity: 0.3
+        opacity: 0.2
 
       20%
         opacity: 0.4
 
       40% 
-        opacity: 0.3
+        opacity: 0.2
 
       70%
-        opacity: 0.4
-
-      90%
         opacity: 0.3
+
+      100%
+        opacity: 0.2
 
     @keyframes flicker
       0%
@@ -221,7 +221,6 @@
         height: 300%
         top: -100%
         left: -50%
-        opacity: 0.7
         animation: blink linear infinite 0.4s
         z-index: -1
         pointer-events: none
