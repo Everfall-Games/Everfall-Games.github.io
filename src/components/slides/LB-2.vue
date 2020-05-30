@@ -117,7 +117,7 @@
       transform: translateY(0)
 
   .content, p, .social, h1, .bar, a
-    animation: slideIn 1s ease-out
+    // animation: slideIn 1s ease-out
 
   .slide
     align-items: center

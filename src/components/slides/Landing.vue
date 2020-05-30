@@ -3,19 +3,20 @@
     //- .dots
     Dots( :mask="mask" )
 
-    .background.octagon
-    .background.octagon.reverse
+    .background.octagons
+      .background.octagon
+      .background.octagon.reverse
 
     .monster
 
-    .content
+    .content( fade-in )
       .heading
         h1 We create
         h1.outline The unique
 
       p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut leo pulvinar, sagittis enim et, porta mauris. Nunc mi ex, elementum sed tempor eget, vestibulum at lacus. Pellentesque aliquam sem eu suscipit vehicula. Pellentesque sollicitudin libero ac nibh pulvinar ullamcorper. 
     
-    .social
+    .social( fade-in )
       a( href="https://discord.gg/sucyFUs" aria-label="Link to Discord guild" )
         Icon discord
 
@@ -66,6 +67,10 @@
     100%
       transform: rotate(360deg)
 
+  .background.octagons
+    z-index: 1
+    transform: translateX(22vmin)
+
   .background.octagon
     background-image: url(~!!file-loader!assets/backgrounds/octagon.svg)
     width: 95vmin
@@ -75,17 +80,18 @@
     background-repeat: no-repeat
     animation: spin 15s linear infinite
     background-position: center center
-    right: -22vmin
+    right: 0
     left: auto
     top: auto
     bottom: 0
+    transform-origin: center
 
     &.reverse
       animation-direction: reverse
       animation-duration: 30s
       animation-delay: -5s
       opacity: 0.5
-      right: -20vmin
+      // transform: translateX(20vmin)
       // width: 98vmin
       // height: 98vmin
 
@@ -98,7 +104,7 @@
       
 
   .content, p, .social, h1:not(.outline)
-    animation: slideIn 1s ease-out
+    // animation: slideIn 1s ease-out
 
   .slide
     background-color: black
@@ -149,24 +155,63 @@
 
     @keyframes blink
       0%
-        opacity: 0.1
-
-      20%
         opacity: 0.3
 
+      20%
+        opacity: 0.4
+
       40% 
-        opacity: 0.1
+        opacity: 0.3
 
       70%
-        opacity: 0.2
+        opacity: 0.4
 
       90%
-        opacity: 0.5
+        opacity: 0.3
+
+    @keyframes flicker
+      0%
+        opacity: 0
+      7%
+        opacity: 0
+      8% 
+        opacity: 0.3
+      10% 
+        opacity: 0.1
+      14% 
+        opacity: 0.1
+      15% 
+        opacity: 0.3
+      17% 
+        opacity: 0
+      22% 
+        opacity: 0
+      30% 
+        opacity: 1
+      41% 
+        opacity: 1
+      42% 
+        opacity: 0.9
+      50% 
+        opacity: 1
+      58% 
+        opacity: 1
+      59% 
+        opacity: 0.9
+      60% 
+        opacity: 1
+      68% 
+        opacity: 1
+      69% 
+        opacity: 0.9
+      70% 
+        opacity: 1
 
     .heading
       position: relative
       display: flex
       flex-direction: column
+      // animation: flicker 2.5s ease-in
 
       &::before
         content: ''
@@ -177,7 +222,7 @@
         top: -100%
         left: -50%
         opacity: 0.7
-        animation: blink linear infinite 0.2s
+        animation: blink linear infinite 0.4s
         z-index: -1
         pointer-events: none
 

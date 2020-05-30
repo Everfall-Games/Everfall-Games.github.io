@@ -72,7 +72,7 @@
       transform: translateX(0)
 
   .content, p, .social, .people, .people > div
-    animation: slideIn 1s ease-out
+    // animation: slideIn 1s ease-out
 
   .content
     text-align: left
