@@ -57,6 +57,11 @@
 <style lang="sass" scoped>
   @import slide
 
+  #home
+    overflow: hidden
+    max-width: 100vw
+    width: 100vw
+
   @keyframes spin
     0%
       transform: rotate(0deg)
