@@ -19,13 +19,13 @@
 
       .people
         div
-          img( src="@/assets/ricardo.png" )
+          img( src="@/assets/ricardo.png" alt="Ricardo portrait" )
           div
             h5 Ricardo Valdes
             h6 Co-Founder
             
         div
-          img( src="@/assets/pedro.png" )
+          img( src="@/assets/pedro.png" alt="Ricardo portrait" )
           div
             h5 Pedro Civa
             h6 Co-Founder

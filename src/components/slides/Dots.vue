@@ -69,29 +69,31 @@
       const seed = Math.random()
 
       const render = () => {
+        context.clearRect(0, 0, canvas.width, canvas.height)
+
         for (let y = dimensions.y; y--;) {
+          context.beginPath()
+
           for (let x = dimensions.x; x--;) {
+
             const X = x / dimensions.x
             const Y = y / dimensions.y
-            const T = frame / 200
+            const T = frame / 100
             const AMP = 4 * (Math.floor(Y * 10) % 3 + 1)
             const PI = Math.PI / 2
 
-            const M = Math.exp(Math.sin((X + Y + T) * AMP * PI), 2) / 4 + 0.2
+            const M = Math.exp(Math.sin((X + Y + T) * AMP * PI)) / 4 + 0.2
 
-            const R = radius * M
-
-            const OX = (this.offset - radius) * x
-            const OY = (this.offset - radius) * y - 50
-
-            context.clearRect(OX - radius, OY - radius, radius * 5, radius * 5)
-
-            context.beginPath()
-
-            context.arc(OX, OY, R, 0, 2 * Math.PI)
-
-            context.fill()
+            context.arc(
+              Math.round((this.offset - radius) * x), 
+              Math.round((this.offset - radius) * y - 50), 
+              radius * M, 
+              0, 
+              2 * Math.PI,
+            )
           }
+
+          context.fill()
         }
 
         if (this.mask) {
@@ -102,14 +104,14 @@
           context.globalCompositeOperation = 'source-over'
         }
 
-        if (frame === 200) frame = 0
+        if (frame === 100) frame = 0
 
         frame += step
       }
 
       render()
 
-      this.renderInterval = setInterval(render, 1000 / 60)
+      this.renderInterval = setInterval(render, 1000 / 30)
     },
 
     destroyed () {

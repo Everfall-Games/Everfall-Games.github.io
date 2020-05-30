@@ -19,7 +19,7 @@
       span
       span
 
-    .menu( v-show="open" mobile )
+    .menu( v-show="open" :style="{ backgroundImage: `url(${ MenuBackground })`}" mobile )
       Link( url="/lb-2" v-on:mousedown.native="() => { $router.push('/lb-2'); open = false }" ) 
         //- Icon lb2-symbol
         | LB-2
@@ -34,6 +34,7 @@
   import config from 'config'
   import Icon from './Icon'
   import Link from './Link'
+  import MenuBackground from '@/assets/backgrounds/menu.webp'
 
   export default {
     components: {
@@ -45,6 +46,7 @@
       return {
         config,
         open: false,
+        MenuBackground,
       }
     },
 
@@ -149,7 +151,7 @@
       left: 0
       width: 100vw
       height: 100vh
-      background-image: url(~assets/backgrounds/menu.webp)
+      // background-image: url(~assets/backgrounds/menu.webp)
       display: flex
       flex-direction: column
       align-items: flex-start
