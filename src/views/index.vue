@@ -6,6 +6,11 @@
     //- ComingSoon
 </template>
 
+<style lang="sass" scoped>
+  .home, .home > *
+    overflow: hidden
+</style>
+
 <script>
   import Landing from '@/components/slides/Landing'
   import About from '@/components/slides/About'
@@ -93,6 +98,10 @@
         if (touch.screenY - this.touchstartPos > window.innerHeight / 5) this.move(-1)
         if (touch.screenY - this.touchstartPos <  -window.innerHeight / 5) this.move(+1)
       },
+
+      scroll (event) {
+        event.preventDefault()
+      },
     },
 
     watch: {
@@ -119,6 +128,8 @@
 
       // window.addEventListener('wheel', this.wheel)
       window.addEventListener('resize', this.resize)
+
+      window.addEventListener('scroll')
     },
 
     destroyed () {
