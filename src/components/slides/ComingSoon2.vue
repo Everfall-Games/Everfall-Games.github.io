@@ -13,9 +13,9 @@
 
     Dots( :mask="mask" )
 
-    //- .background.lim
+    .background.lim
 
-    //- .background.bo
+    .background.bo
 
     .content
       h3 Limbo

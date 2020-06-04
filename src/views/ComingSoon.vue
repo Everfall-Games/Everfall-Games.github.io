@@ -1,7 +1,7 @@
 <template lang="pug">
-  Scroller( :paths="[ '/coming-soon', '/coming-soon/#limbo' ]" )
-    ComingSoon
-    ComingSoon2
+  //- Scroller( :paths="[ '/coming-soon', '/coming-soon/#limbo' ]" )
+  //-   ComingSoon
+  ComingSoon2
 </template>
 
 <script>

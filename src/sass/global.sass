@@ -27,9 +27,11 @@ button
     fill: var(--border)
 
 a
-  color: var(--text)
+  &, *
+    color: var(--text)
+    fill: var(--text)
 
-  &:hover
+  &:hover, &:hover *
     color: var(--border)
     fill: var(--border)
 
