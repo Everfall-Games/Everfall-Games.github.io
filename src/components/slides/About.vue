@@ -125,7 +125,7 @@
 
   @media (max-width: 1400px), (max-height: 900px)
     .content
-      padding-left: 110px
+      padding-right: 110px
 
     .social
       margin-left: 120px

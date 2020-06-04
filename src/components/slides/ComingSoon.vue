@@ -78,6 +78,10 @@
     background-size: 75vmin
     opacity: 0.05
 
+  .slide
+    .lim, .bo
+      position: fixed
+
   .bo
     background-image: url(~!!file-loader!assets/backgrounds/bo.svg)
     background-position: -80vmin 35%
