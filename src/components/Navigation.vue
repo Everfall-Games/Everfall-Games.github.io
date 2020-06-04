@@ -106,13 +106,15 @@
       z-index: 0
 
     a
-      color: white
-      fill: white
       text-decoration: none
-      transition: color 0.2s, border-color 0.2s, fill 0.2s
       display: flex
       align-items: center
       position: relative
+      color: white
+      fill: white
+
+      &, *
+        transition: color 0.2s, border-color 0.2s, fill 0.2s
 
     > a
       height: 100%
@@ -124,15 +126,17 @@
       position: relative
       z-index: 3
 
-    a:not(.header)
+    > a:not(.header)
       margin-left: 90px
       font-weight: 400
-      color: rgb(160, 160, 160)
-      fill: rgb(160, 160, 160)
       letter-spacing: 0.5px
       border-bottom: 4px solid transparent
       border-top: 4px solid transparent
       font-size: 16px
+
+      &, svg
+        color: rgb(160, 160, 160)
+        fill: rgb(160, 160, 160)
 
       svg
         height: 22px
@@ -142,8 +146,9 @@
         border-bottom: 4px solid var(--border)
 
       &:hover, &[current]
-        color: white
-        fill: white
+        &, svg
+          color: white
+          fill: white
 
     .menu
       position: fixed
