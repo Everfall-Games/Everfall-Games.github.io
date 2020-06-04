@@ -1,32 +1,49 @@
-const { email } = require('./secrets')
+const fs = require('fs')
+const path = require('path')
 
 // mail
+const secrets = require('./secrets')
+
 const nodemailer = require('nodemailer')
 
-const send = async () => {
-  const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
-    auth: {
-      user: email.username, // generated ethereal user
-      pass: email.password, // generated ethereal password
-    },
-  })
-  
-  // send mail with defined transport object
+const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
+  auth: {
+    user: secrets.email.username, // generated ethereal user
+    pass: secrets.email.password, // generated ethereal password
+  },
+})
+
+const html = fs.readFileSync(path.resolve('public/email.html'), 'utf8')
+
+const send = async ({
+  name,
+  email,
+  subject,
+  body,
+} = {}) => {
   const info = await transporter.sendMail({
-    from: `Contact <${email.username}>`, // sender address
-    to: email.username, // list of receivers
-    subject: "Hello ✔", // Subject line
-    text: "Hello world?", // plain text body
-    html: "<b>Hello world?</b>", // html body
+    from: `${name} <${secrets.email.username}>`,
+    to: 'andrewarivers@gmail.com', //email.username
+    subject,
+    html: html
+      .replace('{{ email }}', email)
+      .replace('{{ name }}', name)
+      .replace('{{ subject }}', subject)
+      .replace('{{ body }}', body),
   })
 
   console.log(info)
 }
 
-send().catch(console.error)
+send({
+  name: 'Andres',
+  email: 'andrewarivers@gmail.com',
+  subject: 'I have a question.',
+  body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut leo pulvinar, sagittis enim et, porta mauris. Nunc mi ex, elementum sed tempor eget, vestibulum at lacus.',
+}).catch(console.error)
 
 
 // api

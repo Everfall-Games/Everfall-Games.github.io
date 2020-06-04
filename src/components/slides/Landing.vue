@@ -3,9 +3,9 @@
     //- .dots
     Dots( :mask="mask" )
 
-    .background.octagons
-      .background.octagon
-      .background.octagon.reverse
+    //- .background.octagons
+    //-   .background.octagon
+    //-   .background.octagon.reverse
 
     .monster
 
@@ -58,7 +58,7 @@
   @import slide
 
   #home
-    overflow: hidden
+    overflow-x: hidden
     max-width: 100vw
     width: 100vw
 

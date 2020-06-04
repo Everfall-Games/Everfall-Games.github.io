@@ -8,7 +8,7 @@
 
 <style lang="sass" scoped>
   .home, .home > *
-    overflow: hidden
+    overflow-x: hidden
 </style>
 
 <script>
@@ -100,7 +100,7 @@
       },
 
       scroll (event) {
-        event.preventDefault()
+        // event.preventDefault()
       },
     },
 
