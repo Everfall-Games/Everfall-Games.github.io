@@ -5,10 +5,20 @@
   margin: 0
   padding: 0
   box-sizing: border-box
+  scrollbar-width: thin
+  scrollbar-color: var(--text) black
   -webkit-tap-highlight-color: transparent
 
+::-webkit-scrollbar 
+  width: 4px
+  height: 4px
+  background-color: transparent
+    
+::-webkit-scrollbar-thumb
+  background: var(--text)
+
 html
-  // overflow: hidden
+  overflow: hidden
   height: 100%
 
 body

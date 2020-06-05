@@ -1,5 +1,11 @@
 <template lang="pug">
-  section.scroller( ref="scroller" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend" @wheel="wheel" )
+  section.scroller( 
+    ref="scroller" 
+    @touchstart="touchstart" 
+    @touchmove="touchmove" 
+    @touchend="touchend" 
+    @wheel="wheel" 
+  )
     slot
 </template>
 
