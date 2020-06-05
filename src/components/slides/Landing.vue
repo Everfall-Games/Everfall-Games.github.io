@@ -3,9 +3,10 @@
     //- .dots
     Dots( :mask="mask" )
 
-    //- .background.octagons
-    //-   .background.octagon
-    //-   .background.octagon.reverse
+    .background.octagons
+      div
+        .background.octagon
+        .background.octagon.reverse
 
     .monster
 
@@ -58,7 +59,7 @@
   @import slide
 
   #home
-    overflow-x: hidden
+    overflow: hidden
     max-width: 100vw
     width: 100vw
 
@@ -74,7 +75,15 @@
 
   .background.octagons
     z-index: 1
-    transform: translateX(22vmin)
+    overflow: hidden
+
+    > div
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      transform: translateX(22vmin)
 
   .background.octagon
     background-image: url(~!!file-loader!assets/backgrounds/octagon.svg)
@@ -85,7 +94,7 @@
     background-repeat: no-repeat
     animation: spin 15s linear infinite
     background-position: center center
-    right: 0
+    right: 0vmin
     left: auto
     top: auto
     bottom: 0
@@ -95,7 +104,7 @@
       animation-direction: reverse
       animation-duration: 30s
       animation-delay: -5s
-      opacity: 0.5
+      // opacity: 0.5
       // transform: translateX(20vmin)
       // width: 98vmin
       // height: 98vmin
@@ -117,14 +126,14 @@
     .monster
       background-image: url(~assets/backgrounds/monster.webp)
       position: absolute
-      top: 0
+      bottom: 0
       right: 0
-      width: 80%
-      height: 100%
+      width: 90%
+      height: 95%
       background-size: contain
       background-position: bottom right
       background-repeat: no-repeat
-      filter: contrast(0.97) brightness(0.7)
+      // filter: contrast(0.97) brightness(0.7)
       z-index: 1
 
     .content

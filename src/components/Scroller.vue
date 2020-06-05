@@ -1,5 +1,5 @@
 <template lang="pug">
-  section.scroller( ref="scroller" @touchstart="touchstart" @touchmove="touchmove" @wheel="wheel" )
+  section.scroller( ref="scroller" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend" @wheel="wheel" )
     slot
 </template>
 
@@ -16,7 +16,7 @@
       return {
         snapPoints: [],
         lastPos: 0,
-        touchstartPos: 0,
+        touchstartPos: null,
       }
     },
 
@@ -53,9 +53,13 @@
         setTimeout(() => {
           this.isScrolling = false
         }, 350)
+
+        this.touchstartPos = null
       },
 
       wheel (event) {
+        event.preventDefault()
+        
         if (this.isScrolling) return
 
         const delta = event.deltaY > 0 ? 1 : -1
@@ -73,19 +77,24 @@
         })
       },
 
-      touchstart ({ touches }) {
-        const [touch] = touches
+      touchstart (event) {
+        const [ touch ] = event.touches
         this.touchstartPos = touch.screenY
+        event.preventDefault()
       },
 
       touchmove ({ touches }) {
+        if (this.touchstartPos === null) return
         const [touch] = touches
-        if (touch.screenY - this.touchstartPos > window.innerHeight / 5) this.move(-1)
-        if (touch.screenY - this.touchstartPos <  -window.innerHeight / 5) this.move(+1)
+        if (touch.screenY - this.touchstartPos > 100) this.move(-1)
+        if (touch.screenY - this.touchstartPos < -100) this.move(+1)
+      },
+
+      touchend () {
+        this.touchstartPos = null
       },
 
       scroll (event) {
-        // event.preventDefault()
       },
     },
 

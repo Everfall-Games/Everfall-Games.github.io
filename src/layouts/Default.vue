@@ -7,7 +7,7 @@
 
 <style lang="sass" scoped>
   main
-    min-height: 100vh
+    min-height: 100%
 
   .view
     width: 100%

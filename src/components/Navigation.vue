@@ -1,5 +1,5 @@
 <template lang="pug">
-  section.navigation
+  section.navigation( @touchmove="event => event.preventDefault()" )
     Link.header( url="/" v-on:mousedown.native="() => { $store.commit('setSlide', 0); open = false }" ) {{ config.meta.title }}
 
     Link( url="/lb-2" desktop ) 
