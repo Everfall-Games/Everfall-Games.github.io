@@ -66,14 +66,14 @@ app.post('/mail', async (req, res) => {
   })
 
   try {
-    // const result = await send({
-    //   name,
-    //   email,
-    //   subject,
-    //   body,
-    // })
+    const result = await send({
+      name,
+      email,
+      subject,
+      body,
+    })
 
-    // console.log(result)
+    console.log(result)
   } catch (error) {
     console.error(error)
 

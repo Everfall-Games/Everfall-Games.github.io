@@ -14,7 +14,8 @@
     Dots( :mask="mask" )
 
     .content
-      .form( @keydown="keydown")
+      //- @keydown="keydown"
+      .form( ) 
         Input( placeholder="Name" :disabled="loading" )
           input( 
             v-model="name" 
@@ -53,7 +54,7 @@
             required 
           )
 
-        div.submit( @click="submit" role="button" :loading="loading" :disabled="!formValid" ) 
+        div.submit( @click="submit" role="button" :loading="loading" :disabled="!formValid || loading" ) 
           div
             .background.octagon
             //- .background.octagon.reverse
