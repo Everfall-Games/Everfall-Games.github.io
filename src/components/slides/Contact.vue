@@ -343,6 +343,7 @@
 
     &[disabled]
       opacity: 0.6
+      pointer-events: none
 
       .background.octagon
         animation-play-state: paused
