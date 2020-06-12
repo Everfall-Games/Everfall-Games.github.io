@@ -14,32 +14,75 @@
     Dots( :mask="mask" )
 
     .content
-      .form
-        Input( placeholder="Name" v-model="name" :validate="/..+/" )
-        Input( placeholder="Subject" v-model="subject" :validate="/..+/" )
-        Input( placeholder="Email" v-model="email" :validate="emailRegex" )
-        Input( placeholder="Message" v-mode="message" :validate="/.{32}.*/" )
+      .form( @keydown="keydown")
+        Input( placeholder="Name" :disabled="loading" )
+          input( 
+            v-model="name" 
+            :data="name" 
+            required 
+            autocomplete="name" 
+            @input="nameTouch = true" 
+            :invalid="!nameValid && nameTouch" 
+          )
 
-      .links
-        h4 Connect with us
-        a( href="https://discord.gg/sucyFUs" ) Discord
-        a( href="https://twitter.com/EverfallGames" ) Twitter
-        a( href="https://twitter.com/EverfallGames" ) Instagram
+        Input( placeholder="Subject" :disabled="loading")
+          input( 
+            v-model="subject" 
+            :data="subject" 
+            required
+            @input="subjectTouch = true" 
+            :invalid="!subjectValid && subjectTouch" 
+          )
 
-        h4 Everfall
-        a( href="#" disabled ) Careers
-        a( href="#" disabled ) Merch
+        Input( placeholder="Email" :disabled="loading")
+          input( 
+            v-model="email" 
+            :data="email" 
+            required type="email" 
+            autocomplete="email" 
+            @input="emailTouch = true" 
+            :invalid="!emailValid && emailTouch" 
+          )
 
-        h4 Legal
-        a( href="#" disabled ) Terms of Service
-        a( href="#" disabled ) Privacy Policy
-      
+        Input( placeholder="Message" :disabled="loading")
+          span.value( 
+            contenteditable 
+            @input="({ target }) => { body = target.innerText; bodyTouch = true }" 
+            :invalid="!bodyValid && bodyTouch" 
+            ref="bodyInput"
+            required 
+          )
+
+        div.submit( @click="submit" role="button" :loading="loading" :disabled="!formValid" ) 
+          div
+            .background.octagon
+            //- .background.octagon.reverse
+          span {{ submitMessage }}
+
+      .links( desktop )
+        .group
+          h4 Connect with us
+          a( href="https://discord.gg/sucyFUs" ) Discord
+          a( href="https://twitter.com/EverfallGames" ) Twitter
+          a( href="https://twitter.com/EverfallGames" ) Instagram
+
+        .group
+          h4 Everfall
+          a( href="#" disabled ) Careers
+          a( href="#" disabled ) Merch
+
+        .group
+          h4 Legal
+          a( href="#" disabled ) Terms of Service
+          a( href="#" disabled ) Privacy Policy
 </template>
 
 <script>
   import Icon from '@/components/Icon'
   import Dots from './Dots'
   import Input from '@/components/Input'
+
+  import axios from 'axios'
 
   export default {
     components: {
@@ -57,11 +100,128 @@
         email: '',
         emailRegex: /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/i,
         subject: '',
-        message: '',
+        body: '',
+        nameTouch: false,
+        emailTouch: false,
+        subjectTouch: false,
+        bodyTouch: false,
+        loading: false,
+        submitMessage: 'Send message',
       }
     },
 
+    computed: {
+      nameValid () {
+        return Boolean(this.name)
+      },
+
+      emailValid () {
+        return this.emailRegex.test(this.email)
+      },
+
+      subjectValid () {
+        return Boolean(this.subject)
+      },
+
+      bodyValid () {
+        return Boolean(this.body)
+      },
+
+      formValid () {
+        return this.nameValid && this.emailValid && this.subjectValid && this.bodyValid
+      },
+    },
+
     methods: {
+      keydown ({ key }) {
+        if (key === 'Enter' && this.formValid) this.submit()
+      },
+
+      async submit () {
+        this.loading = true
+
+        const { 
+          name, 
+          email, 
+          subject, 
+          body,
+          nameValid, 
+          emailValid, 
+          subjectValid, 
+          bodyValid,
+          formValid,
+        } = this
+
+        if (this.formValid) {
+          // console.table({ 
+          //   name, 
+          //   email, 
+          //   subject, 
+          //   body,
+          // })
+
+          try {
+            await axios({
+              url: '/mail',
+              method: 'POST',
+              data: {
+                name,
+                email,
+                subject,
+                body,
+              },
+            })
+
+            this.name = ''
+            this.email = ''
+            this.subject = ''
+            this.body = ''
+            this.$refs.bodyInput.innerHTML = ''
+
+            this.nameTouch = false
+            this.emailTouch = false
+            this.bodyTouch = false
+            this.subjectTouch = false
+
+            this.submitMessage = 'Message sent'
+          } catch (error) {
+            this.submitMessage = 'Error sending message'
+
+            console.error(new Error(error.message), { 
+              name, 
+              email, 
+              subject, 
+              body,
+              nameValid, 
+              emailValid, 
+              subjectValid, 
+              bodyValid,
+              formValid,
+            })
+          }
+        } else {
+          console.error(new Error('Failed to send message'), { 
+            name, 
+            email, 
+            subject, 
+            body,
+            nameValid, 
+            emailValid, 
+            subjectValid, 
+            bodyValid,
+            formValid,
+          })
+        }
+
+        // const context = this
+
+        setTimeout(() => {
+          this.submitMessage = 'Send message'
+        }, 3500)
+
+        this.loading = false
+      },
+
       mask (canvas, context) {
         if (!this.canvas) return
 
@@ -113,7 +273,7 @@
 
       window.addEventListener('resize', this.resize)
 
-      this.$refs.backgroundVideo.play()
+      // this.$refs.backgroundVideo.play()
     },
 
     destroyed () {
@@ -135,6 +295,81 @@
 
   .content, p, .social, .people, .people > div
     // animation: slideIn 1s ease-out
+
+  @keyframes spin
+    0%
+      transform: rotate(0deg)
+
+    50%
+      transform: rotate(180deg)
+
+    100%
+      transform: rotate(360deg)
+
+  // .background.octagons
+  //   z-index: 1
+  //   overflow: hidden
+
+  //   > div
+  //     position: absolute
+  //     top: 0
+  //     left: 0
+  //     width: 100%
+  //     height: 100%
+  //     transform: translateX(22vmin)
+
+  .submit
+    position: relative
+    height: 100px
+    display: flex
+    align-items: center
+    padding-left: 50px
+    margin-bottom: -50px
+    margin-left: -50px
+    text-transform: uppercase
+    letter-spacing: 1px
+    font-weight: 400
+    cursor: pointer
+
+    div
+      position: absolute
+      top: 0
+      left: 0
+
+    span
+      position: relative
+      z-index: 2
+
+    &[disabled]
+      opacity: 0.6
+
+      .background.octagon
+        animation-play-state: paused
+
+    &[loading] > div > .background.octagon
+      animation-duration: 4s
+
+  .background.octagon
+    background-image: url(~!!file-loader!assets/backgrounds/submit-octagon.svg)
+    height: 100px
+    width: 100px
+    background-size: contain
+    z-index: 1
+    background-repeat: no-repeat
+    animation: spin 15s linear infinite
+    background-position: center center
+    left: 0
+    bottom: 0
+    transform-origin: center
+
+    &.reverse
+      animation-direction: reverse
+      animation-duration: 30s
+      animation-delay: -5s
+      // opacity: 0.5
+      // transform: translateX(20vmin)
+      // width: 98vmin
+      // height: 98vmin
 
   .content
     text-align: left
@@ -176,46 +411,24 @@
         pointer-events: none
 
   .background > img
-    opacity: 0.7
+    opacity: 1
 
-  .people
+  .link
+    height: 100%
+
+  .links
+    justify-content: center
+
+  .links > .group 
     display: flex
-    margin-top: 50px
+    flex-direction: column
+    margin: 20px
 
-    div
-      display: flex
-      margin-right: 50px
+    h4
+      font-size: 16px
 
-      div
-        flex-direction: column
-        justify-content: center
-        margin: 0 20px
-
-    img
-      width: 60px
-      height: 60px
-      clip-path: circle(50% at 50% 50%)
-      object-fit: cover
-      object-position: top
-
-    h5
-      text-transform: uppercase
-      letter-spacing: 3px
-      margin-bottom: 3px
-      font-size: 14px
-
-    h6
-      font-weight: 400
-      letter-spacing: 1px
-      font-size: 14px
-
-  @media (min-width: 1400px), (min-height: 900px)
-    h1
-      &:first-child
-        margin-top: -32px
-
-    p
-      margin-bottom: -10px
+    *
+      font-size: 20px
 
   @media (max-width: 1400px), (max-height: 900px)
     .content
@@ -223,12 +436,6 @@
 
       > .form
         margin-right: 110px
-
-    .social
-      margin-left: 120px
-
-    h1:first-child
-        margin-top: -22px
 
   @media (max-width: 900px), (max-height: 800px)
     .content
@@ -238,63 +445,55 @@
       > .form
         margin-right: 40px
 
-    .social
-      margin-left: 45px
+    .links > .group 
+      margin: 10px
 
-    h1:first-child
-      margin-top: -18px
+      h4
+        font-size: 12px
 
-    .people
-      img
-        width: 50px
-        height: 50px
+      *
+        font-size: 16px
 
-      h5
-        letter-spacing: 3px
-        font-size: 13px
+    .submit
+      margin-left: 0
+      padding-left: 35px
+      margin-bottom: -35px
+      height: 75px
+      font-size: 14px
 
-      h6
-        letter-spacing: 1px
-        font-size: 13px
+    .background.octagon
+      height: 75px
+      width: 75px
 
-  @media (max-width: 700px)
-    .people
-      flex-direction: column
+  @media (max-width: 800px)
+    .links
+      width: 20%
 
-      div
-        margin-right: 0
-        
-        &:first-of-type
-          margin-bottom: 20px
-
-  @media (max-width: 700px), (max-height: 700px)
     h1:first-child
       margin-top: -10px
 
-    .people
-      img
-        width: 50px
-        height: 50px
+    .links > .group 
+      margin: 8px
 
-      h5
-        letter-spacing: 3px
-        font-size: 12px
-
-      h6
-        letter-spacing: 1px
-        font-size: 12px
-
-  @media (max-width: 500px), (max-height: 600px)
-    .people
-      img
-        width: 40px
-        height: 40px
-
-      h5
-        letter-spacing: 3px
+      h4
         font-size: 10px
 
-      h6
-        letter-spacing: 1px
-        font-size: 10px
+      *
+        font-size: 14px
+
+  @media (max-width: 600px)
+    .content
+      flex-direction: column
+
+    .form
+      width: 100%
+
+    .links
+      flex-direction: row
+      justify-content: space-between
+      width: 100%
+
+    .submit
+      margin-bottom: 40px
+
 </style>

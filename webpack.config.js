@@ -165,5 +165,9 @@ module.exports = () => ({
     port: port,
     host: '0.0.0.0',
     historyApiFallback: true,
+    proxy: {
+      context: ['/mail'],
+      target: 'http://localhost:44434',
+    },
   },
 })

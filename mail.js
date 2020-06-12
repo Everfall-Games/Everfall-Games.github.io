@@ -26,7 +26,7 @@ const send = async ({
 } = {}) => {
   const info = await transporter.sendMail({
     from: `${name} <${secrets.email.username}>`,
-    to: 'andrewarivers@gmail.com', //email.username
+    to: secrets.email.username,
     subject,
     html: html
       .replace('{{ email }}', email)
@@ -38,21 +38,51 @@ const send = async ({
   console.log(info)
 }
 
-send({
-  name: 'Andres',
-  email: 'andrewarivers@gmail.com',
-  subject: 'I have a question.',
-  body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut leo pulvinar, sagittis enim et, porta mauris. Nunc mi ex, elementum sed tempor eget, vestibulum at lacus.',
-}).catch(console.error)
-
-
 // api
 const express = require('express')
 
 const app = express()
 
-app.use(require('body-parser'), express.json())
+app.use(require('body-parser').json(), express.json())
 
-app.get('/mail', () => {
+app.post('/mail', async (req, res) => {
+  const {
+    name, 
+    email, 
+    subject, 
+    body, 
+  } = req.body
 
+  if (!name) return res.status(400).send('Please provide a name')
+  if (!email) return res.status(400).send('Please provide a email')
+  if (!subject) return res.status(400).send('Please provide a subject')
+  if (!body) return res.status(400).send('Please provide a body')
+
+  console.log('New email', { 
+    name, 
+    email, 
+    subject, 
+    body,
+  })
+
+  try {
+    // const result = await send({
+    //   name,
+    //   email,
+    //   subject,
+    //   body,
+    // })
+
+    // console.log(result)
+  } catch (error) {
+    console.error(error)
+
+    return res.status(500).send('Internal server error.')
+  }
+
+  res.end()
+})
+
+app.listen(44434, () => {
+  console.log('Mail server listening on port 44434.')
 })

@@ -2,7 +2,7 @@
   Scroller( :paths="[ '/', '/#about', '/#contact' ]" )
     Landing
     About
-    //- Contact
+    Contact
     //- LB2
     //- ComingSoon
 </template>

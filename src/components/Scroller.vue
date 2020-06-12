@@ -84,9 +84,9 @@
       },
 
       touchstart (event) {
-        const [ touch ] = event.touches
+        const [touch] = event.touches
         this.touchstartPos = touch.screenY
-        event.preventDefault()
+        // event.preventDefault()
       },
 
       touchmove ({ touches }) {
