@@ -243,6 +243,12 @@
         padding: 0 45px
         padding-top: 100px
 
+    @media (max-width: 700px), (max-height: 600px)
+      height: 65px
+
+      a.header
+        font-size: 18px
+
     @media (min-width: 1001px)
       *[mobile]
         display: none
