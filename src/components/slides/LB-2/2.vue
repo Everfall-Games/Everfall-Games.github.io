@@ -1,5 +1,5 @@
 <template lang="pug">
-  section.slide#lb-2
+  section.slide
     .background
       video( 
         src="@/assets/backgrounds/lb2.mp4" 
@@ -10,24 +10,24 @@
         loop 
       )
 
-    Dots( :mask="mask" v-show="gradients" )
+    //- Dots( :mask="mask" v-show="gradients" )
 
     .content
-      Icon.symbol lb2
-      h1 Immersive
-      h1.outline Horror
+      //- Icon.symbol lb2
+      h1 No jumpscares
+      h1 Just suspense
       p LB-2 is an open-world, Sci-fi horror game, which focuses on player vs AI gameplay. Taking inspiration from the likes of Alien: Isolation, it operates as a game of 'cat and mouse' as the player attempts to evade and outsmart a trio of demonic creatures in an underground lab facility.
     
-      a.learn-more( href="#" ) Learn More
+      //- a.learn-more( href="#" ) Learn More
         //- .inner Learn More
         //- .hover Learn More
 
-    .bar
+    //- .bar
 </template>
 
 <script>
   import Icon from '@/components/Icon'
-  import Dots from './Dots'
+  import Dots from '../Dots'
 
   export default {
     components: {
@@ -107,7 +107,7 @@
 </script>
 
 <style lang="sass" scoped>
-  @import slide
+  @import ../slide
 
   @keyframes slideIn
     0%
@@ -125,6 +125,9 @@
   .content
     padding: 0 60px
     text-align: center
+    display: flex
+    flex-direction: column
+    align-items: center
 
   .background > video
     opacity: 0.6

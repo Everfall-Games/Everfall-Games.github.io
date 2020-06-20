@@ -1,14 +1,11 @@
 <template lang="pug">
   section.slide#about
-    .background
-      video( 
-        src="@/assets/backgrounds/about.mp4" 
-        ref="backgroundVideo" 
-        poster="@/assets/backgrounds/about.webp"
-        muted 
-        autoplay 
-        loop 
-      )
+    .background.octagons
+      div
+        .background.octagon
+        .background.octagon.reverse
+
+    .monster
 
     Dots( :mask="mask" )
 
@@ -71,6 +68,63 @@
     100%
       transform: translateX(0)
 
+  @keyframes spin
+    0%
+      transform: rotate(0deg)
+
+    50%
+      transform: rotate(180deg)
+
+    100%
+      transform: rotate(360deg)
+
+  .background.octagons
+    z-index: 1
+    overflow: hidden
+
+    > div
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      transform: translateX(-5vmin) translateY(35vmin)
+
+  .background.octagon
+    background-image: url(~!!file-loader!assets/backgrounds/octagon.svg)
+    width: 80vmin
+    height: 80vmin
+    background-size: contain
+    z-index: 1
+    background-repeat: no-repeat
+    animation: spin 15s linear infinite
+    background-position: center center
+    left: 0
+    bottom: 0
+    transform-origin: center
+
+    &.reverse
+      animation-direction: reverse
+      animation-duration: 30s
+      animation-delay: -5s
+      // opacity: 0.5
+      // transform: translateX(20vmin)
+      // width: 98vmin
+      // height: 98vmin
+
+  .monster
+    background-image: url(~assets/backgrounds/memorable_monster.webp)
+    position: absolute
+    bottom: 0
+    left: -10%
+    width: 100%
+    height: 70%
+    background-size: contain
+    background-position: bottom left
+    background-repeat: no-repeat
+    // filter: contrast(0.97) brightness(0.7)
+    z-index: 1
+
   .content, p, .social, .people, .people > div
     // animation: slideIn 1s ease-out
 
@@ -80,6 +134,9 @@
     border-right: 10px solid var(--border)
     padding-right: 150px
     padding-left: 60px
+
+  .slide
+    background-color: black
 
   .background > video
     opacity: 0.7

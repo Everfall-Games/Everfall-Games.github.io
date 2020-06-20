@@ -131,12 +131,12 @@
     left: 0
     opacity: 0.3
     pointer-events: none
-    clip: rect(0, auto, auto, 0)
+    // clip: rect(0, auto, auto, 0)
 
   canvas
     width: 100vw
     height: 100vh
-    position: fixed
+    // position: fixed
     top: 100px
     left: 0
 </style>

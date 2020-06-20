@@ -1,6 +1,7 @@
 <template lang="pug">
   section.navigation( @wheel="event => event.preventDefault()" @touchmove="event => event.preventDefault()" )
-    Link.header( url="/" v-on:mousedown.native="() => { $store.commit('setSlide', 0); open = false }" ) {{ config.meta.title }}
+    Link.header( url="/" v-on:mousedown.native="() => { $store.commit('setSlide', 0); open = false }" )
+      Icon logo
 
     Link( url="/lb-2" desktop ) 
       Icon lb2-symbol
@@ -126,12 +127,16 @@
       position: relative
       z-index: 3
 
+      svg
+        height: 32%
+        width: auto
+
     > a:not(.header)
       margin-left: 90px
       font-weight: 400
       letter-spacing: 0.5px
-      border-bottom: 4px solid transparent
-      border-top: 4px solid transparent
+      border-bottom: 6px solid transparent
+      border-top: 6px solid transparent
       font-size: 16px
 
       &, svg
@@ -143,7 +148,7 @@
         margin-right: 10px
 
       &[current]
-        border-bottom: 4px solid var(--border)
+        border-bottom: 6px solid var(--border)
 
       &:hover, &[current]
         &, svg
