@@ -17,7 +17,7 @@
 
     .background.bo
 
-    .content
+    .content( fade-in  )
       h3 Limbo
       h1.outline A game about
       h1 Moral grey areas

@@ -13,7 +13,7 @@
 
     Dots( :mask="mask" )
 
-    .content
+    .content( fade-in  )
       //- @keydown="keydown"
       .form( ) 
         Input( placeholder="Name" :disabled="loading" )
@@ -65,7 +65,7 @@
           h4 Connect with us
           a( href="https://discord.gg/sucyFUs" ) Discord
           a( href="https://twitter.com/EverfallGames" ) Twitter
-          a( href="https://twitter.com/EverfallGames" ) Instagram
+          a( href="https://www.instagram.com/everfallgames/" ) Instagram
 
         .group
           h4 Everfall

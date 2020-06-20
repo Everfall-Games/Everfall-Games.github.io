@@ -1,15 +1,15 @@
 <template lang="pug">
   section.slide#about
-    .background.octagons
+    .background.octagons( fade-in  )
       div
         .background.octagon
         .background.octagon.reverse
 
-    .monster
+    .monster( fade-in  )
 
     Dots( :mask="mask" )
 
-    .content
+    .content( fade-in  )
       h1 Memorable
       h1.outline Experiences
       p We want to become a main distributor of single-player, AAA quality games and with the launch of LB-2 we hope to gain valuable experience to help us transition to more ambitious projects.

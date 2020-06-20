@@ -1,5 +1,5 @@
 <template lang="pug">
-  Scroller#lb-2( :paths="[ '/lb-2', '/lb-2', '/lb-2' ]" )
+  Scroller#lb-2( :paths="[ '/lb-2', '/lb-2/#no-jumpscares', '/lb-2/#amazing-features' ]" )
     Slide1
     Slide2
     Slide3

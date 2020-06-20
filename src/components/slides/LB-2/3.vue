@@ -1,5 +1,5 @@
 <template lang="pug">
-  section.slide
+  section.slide#amazing-features
     .background
       video( 
         src="@/assets/backgrounds/about.mp4" 
@@ -11,7 +11,7 @@
       )
     //- Dots( :mask="mask" v-show="gradients" )
 
-    .content
+    .content( fade-in  )
       //- Icon.symbol lb2
       h1 Packed with
       h1 Amazing features

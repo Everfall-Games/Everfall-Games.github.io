@@ -3,12 +3,12 @@
     //- .dots
     Dots( :mask="mask" )
 
-    .background.octagons
+    .background.octagons( fade-in  )
       div
         .background.octagon
         .background.octagon.reverse
 
-    .monster
+    .monster( fade-in  )
 
     .content( fade-in )
       .heading
