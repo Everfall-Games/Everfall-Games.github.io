@@ -17,6 +17,9 @@
         h1 Horror experience
 
       p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut leo pulvinar, sagittis enim et, porta mauris. 
+
+      .learn-more
+        a( href="#" ) Join the Discord
 </template>
 
 <script>
@@ -48,6 +51,27 @@
 
 <style lang="sass" scoped>
   @import ../slide
+
+  .learn-more
+    text-transform: uppercase
+    font-weight: 400
+    letter-spacing: 2px
+    transition: color 0.05s
+    background-image: url(~assets/backgrounds/blood1.webp)
+    background-size: contain
+    background-repeat: no-repeat
+    background-position: center
+    height: 110px
+    margin-top: 20px
+    width: 400px
+    display: flex
+    align-items: center
+    justify-content: center
+    padding-right: 55px
+
+    a
+      text-decoration: none
+      transition: color 0.1s
 
   .background.octagons
     z-index: 1

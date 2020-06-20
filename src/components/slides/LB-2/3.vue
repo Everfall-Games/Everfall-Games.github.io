@@ -17,9 +17,8 @@
       h1 Amazing features
       //- p LB-2 is an open-world, Sci-fi horror game, which focuses on player vs AI gameplay. Taking inspiration from the likes of Alien: Isolation, it operates as a game of 'cat and mouse' as the player attempts to evade and outsmart a trio of demonic creatures in an underground lab facility.
     
-      a.learn-more( href="#" ) Check out our kickstarter
-        //- .inner Learn More
-        //- .hover Learn More
+      .learn-more( href="#" ) 
+        a( href="#" ) Check out our kickstarter
 
     //- .bar
 </template>
@@ -143,13 +142,29 @@
     bottom: 0
 
   .learn-more
-    display: inline-block
-    text-decoration: none
     text-transform: uppercase
-    font-weight: 600
+    font-weight: 400
     letter-spacing: 2px
-    margin-top: 40px
     transition: color 0.05s
+    background-image: url(~assets/backgrounds/blood2.webp)
+    background-size: contain
+    background-repeat: no-repeat
+    background-position: center
+    height: 200px
+    margin: 0 auto
+    width: 450px
+    display: flex
+    align-items: center
+    justify-content: center
+    padding-left: 20px
+    padding-top: 10px
+    font-size: 14px
+    margin-bottom: -40px
+    margin-top: 20px
+
+    a
+      text-decoration: none
+      transition: color 0.1s
 
     // .inner
     //   clip-path: inset(0 0 0 0%)
