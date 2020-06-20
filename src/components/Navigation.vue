@@ -3,12 +3,12 @@
     Link.header( url="/" v-on:mousedown.native="() => { $store.commit('setSlide', 0); open = false }" )
       Icon logo
 
-    Link( url="/lb-2" desktop ) 
+    Link( url="/lb-2" v-on:mousedown.native="() => { $store.commit('setSlide', 0); open = false }" desktop ) 
       Icon lb2-symbol
       | LB-2
 
-    Link( url="/coming-soon" desktop ) Coming soon
-    Link( url="/#contact" v-on:mousedown.native="" desktop ) Contact
+    Link( url="/coming-soon" v-on:mousedown.native="() => { $store.commit('setSlide', 0); open = false }" desktop ) Coming soon
+    Link( url="/#contact" v-on:mousedown.native="() => { $store.commit('setSlide', 2); open = false }" desktop ) Contact
 
     button.hamburger( 
       @mousedown="event => event.preventDefault()"
@@ -21,12 +21,12 @@
       span
 
     .menu( v-if="open" :style="{ backgroundImage: `url(${ MenuBackground })`}" mobile )
-      Link( url="/lb-2" v-on:mousedown.native="() => { $router.push('/lb-2'); open = false }" ) 
+      Link( url="/lb-2" v-on:mousedown.native="() => { $store.commit('setSlide', 0); $router.push('/lb-2'); open = false }" ) 
         //- Icon lb2-symbol
         | LB-2
 
-      Link( url="/coming-soon" v-on:mousedown.native="() => { $router.push('/coming-soon'); open = false }" ) Coming soon
-      Link( url="/#contact" v-on:mousedown.native="() => { open = false }" ) Contact
+      Link( url="/coming-soon" v-on:mousedown.native="() => { $store.commit('setSlide', 0); $router.push('/coming-soon'); open = false }" ) Coming soon
+      Link( url="/#contact" v-on:mousedown.native="() => { $store.commit('setSlide', 2); $router.push('/#contact'); open = false }" ) Contact
 
     .line
 </template>
