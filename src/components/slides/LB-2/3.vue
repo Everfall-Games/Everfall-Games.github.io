@@ -14,12 +14,19 @@
 
     .content( fade-in  )
       //- Icon.symbol lb2
-      h1 Packed with
-      h1 Amazing features
+      h1 Packed with features
       //- p LB-2 is an open-world, Sci-fi horror game, which focuses on player vs AI gameplay. Taking inspiration from the likes of Alien: Isolation, it operates as a game of 'cat and mouse' as the player attempts to evade and outsmart a trio of demonic creatures in an underground lab facility.
     
-      .learn-more( href="#" ) 
-        a( href="#" ) Check out our kickstarter
+      //- .learn-more( href="#" ) 
+      //-   a( href="#" ) Check out our kickstarter
+
+      .features
+        Feature.f1( text="Non-Linear" subtext="Gameplay" :background="require('@/assets/backgrounds/Non_Linear_BG.webp')" )
+        Feature.f2( text="AAA" subtext="Graphics" :background="require('@/assets/backgrounds/AAA_Graphics_BG.webp')" )
+        Feature.f3( text="Dynamic" subtext="Environment" :background="require('@/assets/backgrounds/Dynamic_Environment_BG.webp')" )
+        div.break
+        Feature.f4( text="Complex" subtext="AI Agents" :background="require('@/assets/backgrounds/Complex_AI_BG.webp')" )
+        Feature.f5( text="Non-Linear" subtext="Gameplay" :background="require('@/assets/backgrounds/Non_Linear_BG.webp')" )
 
     //- .bar
 </template>
@@ -27,11 +34,13 @@
 <script>
   import Icon from '@/components/Icon'
   import Dots from '../Dots'
+  import Feature from '@/components/LB-2Feature'
 
   export default {
     components: {
       Icon,
       Dots,
+      Feature,
     },
 
     data () {
@@ -114,6 +123,18 @@
     background-color: var(--border)
     position: absolute
     bottom: 0
+
+  .features
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    margin-top: 50px
+
+    .break
+      width: 100%
+    
+    > *
+      width: 30%
 
   .learn-more
     text-transform: uppercase
