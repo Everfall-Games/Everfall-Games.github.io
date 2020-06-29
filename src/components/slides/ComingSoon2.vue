@@ -1,15 +1,15 @@
 <template lang="pug">
   section.slide#limbo
     .background
-      //- video( 
-      //-   src="@/assets/backgrounds/coming-soon.mp4" 
-      //-   ref="backgroundVideo" 
-      //-   poster="@/assets/backgrounds/coming-soon.webp"
-      //-   muted 
-      //-   autoplay 
-      //-   loop 
-      //- )
-      img( src="@/assets/backgrounds/limbo.webp" )
+      video( 
+        src="@/assets/backgrounds/limbo.mp4" 
+        ref="backgroundVideo" 
+        muted 
+        autoplay 
+        loop 
+      )
+      //- poster="@/assets/backgrounds/limbo.webp"
+      //- img( src="@/assets/backgrounds/limbo.webp" )
 
     Dots( :mask="mask" )
 
@@ -147,8 +147,8 @@
       margin-top: 120px
       text-transform: uppercase
 
-  .background > img
-    opacity: 0.4
+  .background > video
+    opacity: 0.5
 
   .symbol
     height: 40px

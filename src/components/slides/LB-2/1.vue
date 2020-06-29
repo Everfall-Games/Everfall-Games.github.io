@@ -10,16 +10,18 @@
         loop 
       )
 
+    Dots( :mask="mask" )
+
     .content( fade-in )
       .heading
         h1 An immersive
         h1 Non-linear,
         h1 Horror experience
 
-      p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut leo pulvinar, sagittis enim et, porta mauris. 
+      p Experience true horror in LB-2 as your heart races each time you turn a corner. With complex AI agents and a dynamic, non-linear environment, you will experience horror like never before.
 
       .learn-more
-        a( href="#" ) Join the Discord
+        a( href="https://discord.gg/QQ3CPxK" ) Join the Discord
 </template>
 
 <script>

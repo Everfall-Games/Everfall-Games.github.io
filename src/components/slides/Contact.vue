@@ -69,7 +69,7 @@
 
         .group
           h4 Everfall
-          a( href="#" disabled ) Careers
+          a( href="https://www.linkedin.com/company/everfall-games/?viewAsMember=true" ) Careers
           a( href="#" disabled ) Merch
 
         .group

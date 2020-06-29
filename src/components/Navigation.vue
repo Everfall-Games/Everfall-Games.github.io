@@ -8,7 +8,7 @@
       | LB-2
 
     Link( url="/coming-soon" v-on:mousedown.native="() => { $store.commit('setSlide', 0); open = false }" desktop ) Coming soon
-    Link( url="/#contact" v-on:mousedown.native="() => { $store.commit('setSlide', 2); open = false }" desktop ) Contact
+    //- Link( url="/#contact" v-on:mousedown.native="() => { $store.commit('setSlide', 2); open = false }" desktop ) Contact
 
     button.hamburger( 
       @mousedown="event => event.preventDefault()"
@@ -26,7 +26,7 @@
         | LB-2
 
       Link( url="/coming-soon" v-on:mousedown.native="() => { $store.commit('setSlide', 0); $router.push('/coming-soon'); open = false }" ) Coming soon
-      Link( url="/#contact" v-on:mousedown.native="() => { $store.commit('setSlide', 2); $router.push('/#contact'); open = false }" ) Contact
+      //- Link( url="/#contact" v-on:mousedown.native="() => { $store.commit('setSlide', 2); $router.push('/#contact'); open = false }" ) Contact
 
     .line
 </template>

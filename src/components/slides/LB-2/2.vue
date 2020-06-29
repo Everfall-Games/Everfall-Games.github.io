@@ -10,12 +10,12 @@
         loop 
       )
 
-    //- Dots( :mask="mask" v-show="gradients" )
+    Dots( :mask="mask" v-show="gradients" )
 
     .content( fade-in  )
       //- Icon.symbol lb2
-      h1 No jumpscares
-      h1 Just suspense
+      h1 No jumpscares,
+      h1 Just suspense.
       p LB-2 is an open-world, Sci-fi horror game, which focuses on player vs AI gameplay. Taking inspiration from the likes of Alien: Isolation, it operates as a game of 'cat and mouse' as the player attempts to evade and outsmart a trio of demonic creatures in an underground lab facility.
     
       //- a.learn-more( href="#" ) Learn More

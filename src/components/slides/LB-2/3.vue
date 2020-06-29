@@ -9,7 +9,8 @@
         autoplay 
         loop 
       )
-    //- Dots( :mask="mask" v-show="gradients" )
+      
+    Dots( :mask="mask" )
 
     .content( fade-in  )
       //- Icon.symbol lb2
@@ -43,44 +44,17 @@
 
     methods: {
       mask (canvas, context) {
-        if (!this.canvas) return
+        const gradient = context.createLinearGradient(0, 0, canvas.width, -canvas.height)
 
-        const gradientCanvas = this.canvas
-        const gradientContext = this.context
+        gradient.addColorStop(0, 'white')
+        gradient.addColorStop(0.2, 'transparent')
+        gradient.addColorStop(0.5, 'transparent')
+        gradient.addColorStop(1, 'white')
 
-        if (!this.gradients) {
+        context.fillStyle = gradient
+        context.fillRect(0, 0, canvas.width, canvas.height)
 
-          gradientCanvas.width = canvas.width / 2
-          gradientCanvas.height = canvas.height / 2
-
-          gradientContext.clearRect(0, 0, canvas.width, canvas.height)
-
-          const R = 55
-
-          const X1 = 0
-          const Y1 = 0
-
-          const X2 = gradientCanvas.width - R * 4
-          const Y2 = gradientCanvas.height - (gradientCanvas.height / 6) - R * 4
-
-          const gradient = (x, y) => {
-            const gradient = context.createRadialGradient(x + R * 2, y + R * 2, 0, x + R * 2, y + R * 2, R * 2)
-            gradient.addColorStop(1, 'transparent')
-            gradient.addColorStop(0, 'white')
-
-            return gradient
-          }
-
-          gradientContext.fillStyle = gradient(X1, Y1)
-          gradientContext.fillRect(X1, Y1, R * 4, R * 4)
-
-          gradientContext.fillStyle = gradient(X2, Y2)
-          gradientContext.fillRect(X2, Y2, R * 4, R * 4)
-
-          this.gradients = true
-        }
-
-        context.drawImage(gradientCanvas, 0, 0, canvas.width, canvas.height)
+        context.fillStyle = 'white'
       },
 
       resize () {
