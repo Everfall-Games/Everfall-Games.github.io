@@ -2,13 +2,13 @@
   section.slide#amazing-features
     .background
       video( 
-        src="@/assets/backgrounds/about.mp4" 
+        src="@/assets/backgrounds/lb2_3_compressed.mp4" 
         ref="backgroundVideo" 
-        poster="@/assets/backgrounds/about.webp"
         muted 
         autoplay 
         loop 
       )
+    //- poster="@/assets/backgrounds/about.webp"
       
     Dots( :mask="mask" )
 
@@ -108,7 +108,7 @@
     text-align: center
 
   .background > video
-    opacity: 1
+    opacity: 0.7
 
   .symbol
     height: 40px

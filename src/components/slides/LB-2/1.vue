@@ -34,19 +34,72 @@
       Dots,
     },
 
+    data () {
+      return {
+        canvas: null,
+        context: null,
+        gradients: false,
+      }
+    },
+
     methods: {
-      mask: (canvas, context) => {
-        const gradient = context.createLinearGradient(0, 0, canvas.width, 0)
+      mask (canvas, context) {
+        if (!this.canvas) return
 
-        gradient.addColorStop(0, 'white')
-        gradient.addColorStop(0.3, 'white')
-        gradient.addColorStop(1, 'transparent')
+        const gradientCanvas = this.canvas
+        const gradientContext = this.context
 
-        context.fillStyle = gradient
-        context.fillRect(0, 0, canvas.width, canvas.height)
+        if (!this.gradients) {
+          gradientCanvas.width = canvas.width / 2
+          gradientCanvas.height = canvas.height / 2
 
-        context.fillStyle = 'white'
+          gradientContext.clearRect(0, 0, canvas.width, canvas.height)
+
+          const R = 60
+
+          const X1 = 0
+          const Y1 = gradientCanvas.height - R * 4
+
+          const X2 = gradientCanvas.width - R * 5
+          const Y2 = 20
+
+          const gradient = (x, y) => {
+            const gradient = context.createRadialGradient(x + R * 2, y + R * 2, 0, x + R * 2, y + R * 2, R * 2)
+            gradient.addColorStop(1, 'transparent')
+            gradient.addColorStop(0, 'white')
+
+            return gradient
+          }
+
+          gradientContext.fillStyle = gradient(X1, Y1)
+          gradientContext.fillRect(X1, Y1, R * 4, R * 4)
+
+          gradientContext.fillStyle = gradient(X2, Y2)
+          gradientContext.fillRect(X2, Y2, R * 4, R * 4)
+
+          this.gradients = true
+        }
+
+        context.drawImage(gradientCanvas, 0, 0, canvas.width, canvas.height)
       },
+
+      resize () {
+        this.gradients = false
+      },
+    },
+
+    mounted () {
+      this.canvas = document.createElement('canvas')
+      this.context = this.canvas.getContext('2d')
+
+      window.addEventListener('resize', this.resize)
+
+      this.$refs.backgroundVideo.play()
+    },
+
+    destroyed () {
+      this.canvas.remove()
+      window.removeEventListener('resize', this.resize)
     },
   }
 </script>
