@@ -21,12 +21,12 @@
       //-   a( href="#" ) Check out our kickstarter
 
       .features
-        Feature.f1( text="Non-Linear" subtext="Gameplay" :background="require('@/assets/backgrounds/Non_Linear_BG.webp')" )
+        Feature.f1( text="Non-Linear" subtext="Gameplay" :background="require('@/assets/backgrounds/Non_linear_BG.webp')" )
         Feature.f2( text="AAA" subtext="Graphics" :background="require('@/assets/backgrounds/AAA_Graphics_BG.webp')" )
         Feature.f3( text="Dynamic" subtext="Environment" :background="require('@/assets/backgrounds/Dynamic_Environment_BG.webp')" )
         div.break
         Feature.f4( text="Complex" subtext="AI Agents" :background="require('@/assets/backgrounds/Complex_AI_BG.webp')" )
-        Feature.f5( text="Non-Linear" subtext="Gameplay" :background="require('@/assets/backgrounds/Non_linear_BG.webp')" )
+        Feature.f5( text="Immersive" subtext="Focus" :background="require('@/assets/backgrounds/Immersive_Focus_BG.webp')" )
 
     //- .bar
 </template>
