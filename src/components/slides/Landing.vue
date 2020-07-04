@@ -15,7 +15,7 @@
         h1 We create
         h1.outline The unique
 
-      p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut leo pulvinar, sagittis enim et, porta mauris. Nunc mi ex, elementum sed tempor eget, vestibulum at lacus. Pellentesque aliquam sem eu suscipit vehicula. Pellentesque sollicitudin libero ac nibh pulvinar ullamcorper. 
+      p Our focus at <b>Everfall Games</b> is to create unique and immersive single-player games. As a new studio, we are preparing for the production of LB-2; our non-linear horror game from which we hope to bring a fresh take on the horror genre.
     
     .social( fade-in )
       a( href="https://discord.gg/sucyFUs" aria-label="Link to Discord guild" )
