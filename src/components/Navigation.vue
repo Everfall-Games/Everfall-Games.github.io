@@ -166,7 +166,7 @@
       flex-direction: column
       align-items: flex-start
       justify-content: flex-start
-      background-position: center right
+      background-position: center center
       background-size: cover
       z-index: 2
       padding: 0 120px
@@ -193,7 +193,7 @@
         top: 0
         background-color: var(--background)
         content: ''
-        opacity: 0.7
+        opacity: 0.5
 
     @media (max-width: 1400px), (max-height: 900px)
       padding: 0 120px
