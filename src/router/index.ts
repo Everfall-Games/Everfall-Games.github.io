@@ -23,6 +23,11 @@ const routes = [
     name: 'ComingSoon',
     component: (): Promise<typeof import('*.vue')> => import(/* webpackChunkName: "coming-soon" */ '../views/ComingSoon.vue'),
   },
+  {
+    path: '/contact',
+    name: 'Contact',
+    component: (): Promise<typeof import('*.vue')> => import(/* webpackChunkName: "coming-soon" */ '../views/Contact.vue'),
+  },
   // {
   //   path: '/jobs/post',
   //   name: 'PostJob',

@@ -2,9 +2,9 @@
   section.slide#no-jumpscares
     .background
       video( 
-        src="@/assets/backgrounds/lb2.mp4" 
+        src="@/assets/backgrounds/lb2-trailer-001-compressed.mp4" 
         ref="backgroundVideo" 
-        poster="@/assets/backgrounds/lb2.webp"
+        poster="@/assets/backgrounds/lb2-trailer-001.png"
         muted 
         autoplay 
         loop 

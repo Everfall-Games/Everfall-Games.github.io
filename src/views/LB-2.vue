@@ -9,8 +9,8 @@
 <script>
   import Slide1 from '@/components/slides/LB-2/1'
   import Slide2 from '@/components/slides/LB-2/2'
-  import Slide3 from '@/components/slides/LB-2/3'
-  import Slide4 from '@/components/slides/LB-2/4'
+  // import Slide3 from '@/components/slides/LB-2/3'
+  // import Slide4 from '@/components/slides/LB-2/4'
   import Scroller from '@/components/Scroller'
 
   export default {
@@ -18,8 +18,8 @@
       Scroller,
       Slide1,
       Slide2,
-      Slide3,
-      Slide4,
+      // Slide3,
+      // Slide4,
     },
   }
 </script>
