@@ -7,8 +7,10 @@
       Icon lb2-symbol
       | LB-2
 
-    Link( url="/coming-soon" v-on:mousedown.native="() => { $store.commit('setSlide', 0); open = false }" desktop ) Coming soon
-    Link( url="/contact" v-on:mousedown.native="() => { $store.commit('setSlide', 2); open = false }" desktop ) Contact
+    Link( url="/limbo" v-on:mousedown.native="() => { $store.commit('setSlide', 0); open = false }" desktop ) Announcement Soon
+    Link( url="/western" v-on:mousedown.native="() => { $store.commit('setSlide', 0); open = false }" desktop ) Announcement Soon
+    //- Remove Contact For Time Being As Requested
+    //- Link( url="/contact" v-on:mousedown.native="() => { $store.commit('setSlide', 2); open = false }" desktop ) Contact
 
     button.hamburger( 
       @mousedown="event => event.preventDefault()"
@@ -25,8 +27,10 @@
         //- Icon lb2-symbol
         | LB-2
 
-      Link( url="/coming-soon" v-on:mousedown.native="() => { $store.commit('setSlide', 0); $router.push('/coming-soon'); open = false }" ) Coming soon
-      Link( url="/contact" v-on:mousedown.native="() => { $store.commit('setSlide', 2); $router.push('/contact'); open = false }" ) Contact
+      Link( url="/limbo" v-on:mousedown.native="() => { $store.commit('setSlide', 0); $router.push('/limbo'); open = false }" ) Announcement Soon
+      Link( url="/western" v-on:mousedown.native="() => { $store.commit('setSlide', 0); $router.push('/western'); open = false }" ) Announcement Soon
+      //- Remove Contact For Time Being As Requested
+      //- Link( url="/contact" v-on:mousedown.native="() => { $store.commit('setSlide', 2); $router.push('/contact'); open = false }" ) Contact
 
     .line
 </template>
@@ -161,7 +165,7 @@
       left: 0
       width: 100vw
       height: 100vh
-      // background-image: url(~assets/backgrounds/menu.webp)
+      //- background-image: url(~assets/backgrounds/menu.webp)
       display: flex
       flex-direction: column
       align-items: flex-start
@@ -181,6 +185,11 @@
         font-weight: 800
         letter-spacing: 3px
         border-bottom: none
+        // Pretty wack fix for menu... blame poison
+        @media (max-width: 560px)
+          font-size: 35px
+          @media (max-width: 430px)
+            font-size: 25px
 
         &:hover
           color: var(--border)
@@ -254,11 +263,11 @@
       a.header
         font-size: 18px
 
-    @media (min-width: 1001px)
+    @media (min-width: 1071px)
       *[mobile]
         display: none
 
-    @media (max-width: 1000px)
+    @media (max-width: 1070px)
       *[desktop]
         display: none
 </style>

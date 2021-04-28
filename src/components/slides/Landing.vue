@@ -15,17 +15,22 @@
         h1 We create
         h1.outline The unique
 
-      p Our focus at <b>Everfall Games</b> is to create unique and immersive single-player games. As a new studio, we are preparing for the production of LB-2; our non-linear horror game from which we hope to bring a fresh take on the horror genre.
+      //- Edited to match new bio
+      p "Our focus at <b>Everfall</b> is to create visually stunning and immersive single-player games for both desktop systems and consoles. At <b>Everfall</b>, we highly value the art of making games while equally bringing innovative and unique mechanics that add genuine interaction between our players and the environments we craft." -Ricardo Valdes, Founder
     
     .social( fade-in )
       a( href="https://discord.gg/sucyFUs" aria-label="Link to Discord guild" )
         Icon discord
 
-      a( href="https://www.instagram.com/everfallgames/" aria-label="Link to Instagram page" )
-        Icon instagram
+      //- Per edit request remove discord and twitter, add linkedin
+      a( href="https://www.linkedin.com/company/everfall-games" aria-label="Link to Linkedin" )
+        Icon linkedin
 
-      a( href="https://twitter.com/EverfallGames" aria-label="Link to Twitter page" )
-        Icon twitter
+      //- a( href="https://www.instagram.com/everfallgames/" aria-label="Link to Instagram page" )
+      //-   Icon instagram
+
+      //- a( href="https://twitter.com/EverfallGames" aria-label="Link to Twitter page" )
+      //-   Icon twitter
 </template>
 
 <script>
@@ -159,7 +164,8 @@
       a
         cursor: pointer
         margin-right: 26px
-        height: 30px
+        //height: 30px
+        height: 21px // Edit Request Reduce By 30%
         display: inline-block
         padding: 2px
         margin-left: -2px
