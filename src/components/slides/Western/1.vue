@@ -2,7 +2,7 @@
   section.slide
     .background
       video( 
-        src="@/assets/backgrounds/western_1_compressed.mp4" 
+        src="@/assets/backgrounds/western_2_compressed.mp4" 
         ref="backgroundVideo"
         poster="@/assets/backgrounds/limbo.webp"
         muted 
@@ -19,10 +19,9 @@
     //- .background.bo
 
     .content( fade-in  )
-      h1 Truth, Lies
-      h1.outline & Victims
-      p An impostor game where you must work together if you want to survive the isolated wilderness during a snowstorm. With a Sheriff, a Deputy, Bandits & Civilians, you will have to choose who you trust carefully. Gather food by hunting animals, chop trees for fire wood to keep warm, and acquire other resources to survive until the storm passes.
-      span More Details Coming Soon...
+      h3 Western
+        Icon western
+      h1 Coming Soon
 
     .bar
       Icon broosh-impact
@@ -141,8 +140,17 @@
   .content
     padding: 0 60px
     text-align: center
-    margin-bottom: 50px
-
+    margin-bottom: 100px
+    h3
+      display: flex
+      flex-direction: row-reverse
+      align-items: center
+      justify-content: center
+      gap: 1.5rem
+      svg
+        fill: #fff
+        width: auto
+        height: 2.7rem
     span
       display: inline-block
       font-weight: 600
@@ -181,6 +189,10 @@
     .bar
       max-width: 350px
       //height: 6px
+
+    .content > h3 > svg
+      height: 1.8rem
+      // gap: 0.1rem
 
     .content > span
       margin-bottom: 40px

@@ -1,5 +1,5 @@
 <template lang="pug">
-  Scroller( :paths="[ '/western', '/western/#coming-soon' ]" )
+  Scroller( :paths="[ '/western', '/western/#more-info' ]" )
     Western
     Western2
 </template>

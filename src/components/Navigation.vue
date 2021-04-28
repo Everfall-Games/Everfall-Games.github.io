@@ -6,9 +6,10 @@
     Link( url="/lb-2" v-on:mousedown.native="() => { $store.commit('setSlide', 0); open = false }" desktop ) 
       Icon lb2-symbol
       | LB-2
-
+    Link( url="/western" v-on:mousedown.native="() => { $store.commit('setSlide', 0); open = false }" desktop )
+      Icon western
+      | Announcement Soon
     Link( url="/limbo" v-on:mousedown.native="() => { $store.commit('setSlide', 0); open = false }" desktop ) Announcement Soon
-    Link( url="/western" v-on:mousedown.native="() => { $store.commit('setSlide', 0); open = false }" desktop ) Announcement Soon
     //- Remove Contact For Time Being As Requested
     //- Link( url="/contact" v-on:mousedown.native="() => { $store.commit('setSlide', 2); open = false }" desktop ) Contact
 
@@ -28,7 +29,8 @@
         | LB-2
 
       Link( url="/limbo" v-on:mousedown.native="() => { $store.commit('setSlide', 0); $router.push('/limbo'); open = false }" ) Announcement Soon
-      Link( url="/western" v-on:mousedown.native="() => { $store.commit('setSlide', 0); $router.push('/western'); open = false }" ) Announcement Soon
+      Link( url="/western" v-on:mousedown.native="() => { $store.commit('setSlide', 0); $router.push('/western'); open = false }" )
+        | Announcement Soon
       //- Remove Contact For Time Being As Requested
       //- Link( url="/contact" v-on:mousedown.native="() => { $store.commit('setSlide', 2); $router.push('/contact'); open = false }" ) Contact
 
@@ -263,11 +265,11 @@
       a.header
         font-size: 18px
 
-    @media (min-width: 1071px)
+    @media (min-width: 1096px)
       *[mobile]
         display: none
 
-    @media (max-width: 1070px)
+    @media (max-width: 1095px)
       *[desktop]
         display: none
 </style>
