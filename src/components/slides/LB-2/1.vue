@@ -2,7 +2,7 @@
   section.slide
     .background
       video( 
-        src="@/assets/backgrounds/monster2.mp4" 
+        src="@/assets/backgrounds/lb2_bgvid_1_compressed.mp4" 
         ref="backgroundVideo" 
         poster="@/assets/backgrounds/monster2.png"
         muted 
@@ -15,11 +15,11 @@
     .content( fade-in )
       .heading
         h1 An immersive
-        h1 Non-linear,
+        h1 Non-linear
         h1 Horror experience
-
-      p Experience true horror in LB-2 as your heart races each time you turn a corner. With complex AI agents and a dynamic, non-linear environment, you will experience horror like never before.
-
+      //- Changed Per Edit Request
+      //- p Experience true horror in LB-2 as your heart races each time you turn a corner. With complex AI agents and a dynamic, non-linear environment, you will experience horror like never before.
+      p Experience true horror as you are immersed into a dynamic environment with horror laying around each corner. Equipped with an advanced forensic audio tool, it is up to you to discover what has happened at the LB-2 facility
       .learn-more
         a( href="https://discord.gg/QQ3CPxK" ) Join the Discord
 </template>

@@ -1,7 +1,7 @@
 <template lang="pug">
   Scroller( :paths="[ '/', '/#about' ]" )
     Landing
-    About
+    //- About
     //- Contact
     //- LB2
     //- ComingSoon
