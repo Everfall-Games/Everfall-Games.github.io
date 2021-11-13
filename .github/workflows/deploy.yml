@@ -1,9 +1,9 @@
 name: Deploy 🚀
 on:
   workflow_dispatch: {}
-  # push:
-  #   branches:
-  #     - master
+  push:
+    branches:
+      - master
 jobs:
   gh-pages-deploy:
     name: Deploy 🚀
@@ -35,4 +35,4 @@ jobs:
         with:
           branch: gh-pages
           folder: dist
-          
+
