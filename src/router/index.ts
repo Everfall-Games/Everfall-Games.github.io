@@ -19,15 +19,21 @@ const routes = [
     component: (): Promise<typeof import('*.vue')> => import(/* webpackChunkName: "lb-2" */ '../views/LB-2.vue'),
   },
   {
-    path: '/coming-soon',
-    name: 'ComingSoon',
-    component: (): Promise<typeof import('*.vue')> => import(/* webpackChunkName: "coming-soon" */ '../views/ComingSoon.vue'),
+    path: '/limbo',
+    name: 'Limbo',
+    component: (): Promise<typeof import('*.vue')> => import(/* webpackChunkName: "limbo" */ '../views/Limbo.vue'),
   },
   {
-    path: '/contact',
-    name: 'Contact',
-    component: (): Promise<typeof import('*.vue')> => import(/* webpackChunkName: "coming-soon" */ '../views/Contact.vue'),
+    path: '/western',
+    name: 'Western',
+    component: (): Promise<typeof import('*.vue')> => import(/* webpackChunkName: "western" */ '../views/Western.vue'),
   },
+  // Remove For Time Being As Requested
+  // {
+  //   path: '/contact',
+  //   name: 'Contact',
+  //   component: (): Promise<typeof import('*.vue')> => import(/* webpackChunkName: "coming-soon" */ '../views/Contact.vue'),
+  // },
   // {
   //   path: '/jobs/post',
   //   name: 'PostJob',

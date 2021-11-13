@@ -2,7 +2,7 @@
   section.slide#no-jumpscares
     .background
       video( 
-        src="@/assets/backgrounds/lb2-trailer-001-compressed.mp4" 
+        src="@/assets/backgrounds/lb2_bgvid_2_compressed.mp4" 
         ref="backgroundVideo" 
         poster="@/assets/backgrounds/lb2-trailer-001.png"
         muted 
@@ -14,10 +14,14 @@
 
     .content( fade-in  )
       //- Icon.symbol lb2
-      h1 No jumpscares,
-      h1 Just suspense.
-      p LB-2 is an open-world, Sci-fi horror game, which focuses on player vs AI gameplay. Taking inspiration from the likes of Alien: Isolation, it operates as a game of 'cat and mouse' as the player attempts to evade and outsmart a trio of demonic creatures in an underground lab facility.
-    
+      h1 No jumpscares
+      //- Edited Per Request
+      //- h1 Just suspense.
+      h1 Only suspense
+      //- Edited Per Request
+      //- p LB-2 is an open-world, Sci-fi horror game, which focuses on player vs AI gameplay. Taking inspiration from the likes of Alien: Isolation, it operates as a game of 'cat and mouse' as the player attempts to evade and outsmart a trio of demonic creatures in an underground lab facility.
+      p Relying mostly on suspense and ambience, we still will employ use of QTEs for the release of tension, however our horror will stem from the expectation and feeling of something lurking and observing you, just out of sight.
+
       //- a.learn-more( href="#" ) Learn More
         //- .inner Learn More
         //- .hover Learn More
@@ -120,14 +124,20 @@
     // animation: slideIn 1s ease-out
 
   .slide
-    align-items: center
+    align-items: flex-end
 
   .content
     padding: 0 60px
-    text-align: center
+    text-align: right
+    border-right: 10px solid transparent
+    padding-right: 150px
+    padding-left: 60px
+    position: relative
+    top: 10px
     display: flex
     flex-direction: column
-    align-items: center
+    align-items: flex-end
+      
 
   .background > video
     opacity: 0.6
@@ -176,11 +186,27 @@
     //   .hover
     //     clip-path: inset(0 0% 0 0)
 
+  @media (min-width: 1400px), (min-height: 900px)
+    h1
+      &:first-child
+        margin-top: -32px
+
+    p
+      margin-bottom: -10px
+
   @media (max-width: 1400px), (max-height: 900px)
+    .content
+      padding-right: 110px
     .bar
       max-width: 600px
+    h1:first-child
+      margin-top: -22px
 
   @media (max-width: 900px), (max-height: 800px)
+    .content
+      padding: 0 40px
+      border-width: 6px
+
     .bar
       max-width: 500px
       height: 6px
@@ -188,4 +214,10 @@
     .symbol
       height: 30px
       margin-bottom: 10px
+    h1:first-child
+      margin-top: -18px
+
+  @media (max-width: 700px), (max-height: 700px)
+    h1:first-child
+      margin-top: -10px
 </style>
