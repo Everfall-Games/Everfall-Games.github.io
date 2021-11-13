@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1011.594" height="1013.407" viewBox="0 0 1011.594 1013.407">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #ee2d2d;
+        stroke-linecap: round;
+        stroke-width: 2px;
+        stroke-dasharray: 4 22;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="Polygon_1_copy_3" data-name="Polygon 1 copy 3" class="cls-1" d="M1050.84,680.43L998.579,1078.1,680.607,1322.23l-397.419-52.42L39.125,951.559,91.386,553.893l317.971-244.13,397.419,52.413Z" transform="translate(-38.656 -309.813)"/>
+</svg>
